@@ -1,0 +1,321 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>My Works - Brynn's Space</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#fcf9f8",
+                        "on-surface-variant": "#52443b",
+                        "error": "#ba1a1a",
+                        "on-secondary-container": "#5b673d",
+                        "on-tertiary-container": "#4a3e3b",
+                        "on-primary-fixed": "#321300",
+                        "on-tertiary-fixed-variant": "#504441",
+                        "surface-container-high": "#eae7e7",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface": "#1b1c1c",
+                        "error-container": "#ffdad6",
+                        "on-primary": "#ffffff",
+                        "primary-fixed": "#ffdbc8",
+                        "surface-container-highest": "#e4e2e1",
+                        "surface-variant": "#e4e2e1",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#b9a9a6",
+                        "on-background": "#1b1c1c",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "tertiary": "#685b59",
+                        "on-primary-fixed-variant": "#6e3912",
+                        "inverse-on-surface": "#f3f0ef",
+                        "outline": "#85746a",
+                        "secondary-fixed-dim": "#bfcc99",
+                        "on-error-container": "#93000a",
+                        "secondary": "#576339",
+                        "surface-tint": "#8a5027",
+                        "surface-dim": "#dcd9d9",
+                        "tertiary-fixed": "#f1dfdb",
+                        "surface": "#fcf9f8",
+                        "tertiary-fixed-dim": "#d4c3bf",
+                        "primary-fixed-dim": "#ffb689",
+                        "secondary-fixed": "#dbe8b4",
+                        "on-secondary-fixed": "#151f00",
+                        "primary-container": "#e69c6d",
+                        "background": "#fcf9f8",
+                        "on-primary-container": "#66330c",
+                        "surface-container": "#f0eded",
+                        "surface-container-low": "#f6f3f2",
+                        "secondary-container": "#d8e6b1",
+                        "primary": "#8a5027",
+                        "inverse-surface": "#303030",
+                        "inverse-primary": "#ffb689",
+                        "on-secondary-fixed-variant": "#404b24",
+                        "outline-variant": "#d8c2b7",
+                        "on-tertiary-fixed": "#231917"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "3xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "card-padding": "24px",
+                        "container-padding": "40px",
+                        "section-gap": "80px",
+                        "base": "8px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "label-bold": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "display": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-bold": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "1", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "display": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+.game-main { max-width: 1280px; margin: 0 auto; padding-left: 40px; padding-right: 40px; }
+.game-experience-shell { width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 0 110px; }
+.game-experience-heading { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: start; gap: 48px; margin-bottom: 48px; }
+.game-kicker { margin: 0 0 12px; color: #8a5027; font-size: 14px; line-height: 1; font-weight: 700; letter-spacing: .14em; }
+.game-experience-heading h1 { margin: 0; color: #1b1c1c; font-size: 64px; line-height: 1.1; font-weight: 700; }
+.game-intro { max-width: 650px; margin: 18px 0 0; color: #52443b; font-size: 18px; line-height: 1.65; }
+.game-total { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; min-width: 250px; padding: 0 0 4px; }
+.game-total-line { color: #1b1c1c; font-size: clamp(24px, 3vw, 34px); line-height: 1.08; font-weight: 700; letter-spacing: -.02em; white-space: nowrap; }
+.game-total-line span { margin-left: 8px; color: #8a5027; font-size: .45em; letter-spacing: .12em; vertical-align: .22em; }
+.game-groups { display: flex; flex-direction: column; gap: 34px; } .game-group-pair { display: flex; align-items: flex-start; gap: 8px; } .game-group-pair .game-group { flex: 0 0 auto; width: max-content; height: max-content; padding-bottom: 0; border-bottom: 0; } .game-group-pair .game-group-heading { margin-bottom: 14px; } .game-group-pair .game-grid { grid-template-columns: repeat(2, 172px); gap: 6px; } .game-group-pair .game-group:last-child .game-grid { grid-template-columns: repeat(3, 172px); gap: 6px; } .game-group-pair .game-card { width: 172px !important; min-width: 172px !important; max-width: 172px; } .game-group-pair .game-cover { width: 172px !important; height: 258px !important; aspect-ratio: 2 / 3 !important; }
+.game-group { padding: 0 0 30px; border-bottom: 2px solid #1b1c1c; }
+.game-group:last-child { border-bottom: 0; } .game-group-pair .game-group:last-child { border-bottom: 0; }
+.game-group-heading { display: flex; justify-content: flex-start; align-items: center; gap: 16px; margin-bottom: 18px; }
+.game-group-heading > div { display: flex; align-items: center; gap: 14px; min-width: 0; }
+.game-number { flex: 0 0 auto; color: #8a5027; font-size: 22px; line-height: 1.1; font-weight: 800; letter-spacing: -.02em; text-shadow: 0 0 7px rgba(230,156,109,.8); }
+.game-group h2 { margin: 0; color: #8a5027; font-size: 22px; line-height: 1.1; font-weight: 800; letter-spacing: -.02em; text-shadow: 0 0 7px rgba(230,156,109,.8); }
+.game-group-heading > strong { color: #576339; font-size: 18px; line-height: 1; font-weight: 800; letter-spacing: .04em; white-space: nowrap; text-shadow: 0 0 6px rgba(191,204,153,.85); }
+.game-grid { display: grid; grid-template-columns: repeat(5, 172px); gap: 18px; justify-content: start; }
+.game-card { width: 172px; min-width: 172px; display: flex; flex-direction: column; border: 2px solid #1b1c1c; border-radius: 12px; background: #fcf9f8; overflow: hidden; box-shadow: none; transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease; }
+.game-card:nth-child(3n + 1) { background: #f1dfdb; }
+.game-card:nth-child(3n + 2) { background: #d8e6b1; }
+.game-card:nth-child(3n) { background: #ffdbc8; }
+.game-card:hover { transform: translateY(-5px); border-color: #8a5027; box-shadow: none; }
+.game-cover { flex: 0 0 auto; width: 172px; height: 258px; aspect-ratio: 2 / 3 !important; border-bottom: 2px solid #1b1c1c; background: #f0eded; overflow: hidden; }
+.game-cover img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.game-card-info { flex: 0 0 auto; min-height: 0; padding: 8px 9px 10px; }
+.game-card-info h3 { margin: 0; color: #1b1c1c; font-size: 15px; line-height: 1.2; font-weight: 700; }
+.game-card-info p { margin: 2px 0 0; color: #52443b; font-size: 12px; line-height: 1.2; }
+.game-card-info > strong { display: inline-block; margin-top: 7px; padding: 5px 7px; color: #1b1c1c; font-size: 14px; line-height: 1; letter-spacing: .03em; border: 2px solid #1b1c1c; border-radius: 999px; background: #e69c6d; }
+@media (max-width: 1020px) { .game-grid { grid-template-columns: repeat(4, 172px); } }
+@media (max-width: 820px) { .game-group-pair { display: flex; flex-direction: column; gap: 24px; } .game-group-pair .game-grid { grid-template-columns: repeat(2, 172px); } } @media (max-width: 820px) { .game-main { padding-left: 24px; padding-right: 24px; } .game-experience-heading { grid-template-columns: 1fr; gap: 18px; } .game-total { align-items: flex-start; padding-top: 0; } .game-grid { display: grid; grid-template-columns: repeat(5, 172px); gap: 18px; justify-content: start; } }
+@media (max-width: 600px) { .game-main { padding-left: 16px; padding-right: 16px; } .game-experience-shell { padding-top: 24px; } .game-experience-heading { margin-bottom: 34px; } .game-intro { font-size: 15px; } .game-group-heading { align-items: flex-start; flex-direction: column; gap: 8px; } .game-group-heading > div { align-items: flex-start; flex-direction: column; gap: 6px; } .game-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; } .game-card-info { padding: 8px; } }
+</style>
+<style>
+.game-item { min-width: 0; }
+.game-item-hidden { display: none; }
+.game-group-expanded .game-item-hidden { display: block; }
+.game-toggle { margin-left: auto; display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border: 2px solid #1b1c1c; border-radius: 999px; background: #e69c6d; color: #1b1c1c; cursor: pointer; transition: transform .2s ease, background .2s ease; }
+.game-toggle:hover { background: #d8e6b1; transform: translateY(2px); }
+.game-toggle .material-symbols-outlined { transition: transform .25s ease; }
+.game-group-expanded .game-toggle .material-symbols-outlined { transform: rotate(180deg); }
+
+.game-main .game-group { padding: 26px !important; border-radius: 24px !important; box-shadow: 6px 6px 0 #1b1c1c !important; }
+.game-main .game-group-pair .game-group { padding: 26px !important; }
+
+
+.game-main .game-experience-heading { display: grid !important; grid-template-columns: minmax(0, 1fr) auto !important; align-items: end !important; margin-top: 34px !important; }
+.game-main .game-total { display: flex !important; flex-direction: column !important; align-items: flex-end !important; gap: 6px !important; padding-top: 0 !important; margin-top: -42px !important; }
+.game-main .game-total-line { display: block !important; font-size: clamp(38px, 5vw, 56px) !important; line-height: 1.12 !important; }
+
+.neo-shadow-hover:hover { box-shadow: 2px 2px 0px 0px rgba(27,28,28,1); transform: translate(2px, 2px); }
+.hover-jiggle { transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+.group:nth-child(odd) .hover-jiggle:hover { transform: scale(1.05) rotate(-3deg); }
+.group:nth-child(even) .hover-jiggle:hover { transform: scale(1.05) rotate(3deg); }
+</style><style>
+@media (min-width: 768px) {
+  body { padding-bottom: 104px !important; }
+  .page-main { padding-top: 36px !important; padding-bottom: 32px !important; gap: 32px !important; }
+  .page-footer { position: fixed !important; left: 0; right: 0; bottom: 0; margin-top: 0 !important; z-index: 40; }
+  .page-footer { border-bottom: 0 !important; border-left: 0 !important; border-right: 0 !important; }
+  .page-footer > div { padding-top: 16px !important; padding-bottom: 16px !important; }
+  .showcase-header { margin-bottom: 24px !important; }
+  .showcase-carousel { padding-top: 16px !important; padding-bottom: 16px !important; margin-bottom: 24px !important; }
+  .showcase-cards { height: 320px !important; margin-bottom: 16px !important; }
+  .showcase-carousel .carousel-item { height: 300px !important; }
+  .showcase-carousel .carousel-item.active { height: 320px !important; }
+  .showcase-detail { padding: 24px !important; }
+  .home-hero { min-height: 560px !important; padding-top: 32px !important; padding-bottom: 32px !important; }
+  .home-image-card { width: 72% !important; height: 72% !important; }
+  .ai-showcase-video { max-height: 300px !important; }
+  .ai-detail-grid { margin-bottom: 24px !important; }
+}
+</style><style>
+.game-main { max-width: 1280px; margin: 0 auto; padding-left: 40px; padding-right: 40px; }
+.game-experience-shell { width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 0 120px; }
+.game-experience-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; margin-bottom: 42px; }
+.game-kicker { color: #8a5027; font-size: 13px; font-weight: 700; letter-spacing: .14em; margin: 0 0 10px; }
+.game-experience-heading h1 { color: #1b1c1c; font-size: 64px; line-height: 1.1; margin: 0; font-weight: 700; }
+.game-intro { color: #52443b; font-size: 17px; margin: 18px 0 0; }
+.game-total { display: grid; grid-template-columns: auto auto; column-gap: 10px; align-items: baseline; min-width: 210px; }
+.game-total strong { font-size: 28px; line-height: 1; color: #1b1c1c; }
+.game-total span { font-size: 12px; font-weight: 700; letter-spacing: .08em; color: #52443b; }
+.game-groups { display: flex; flex-direction: column; gap: 28px; }
+.game-group { border: 2px solid #1b1c1c; border-radius: 24px; padding: 26px; box-shadow: 6px 6px 0 #1b1c1c; }
+.game-group-heading { display: flex; justify-content: flex-start; align-items: center; gap: 16px; margin-bottom: 18px; }
+.game-group-heading > div { display: flex; align-items: center; gap: 14px; min-width: 0; }
+.game-number { font-size: 14px; font-weight: 700; letter-spacing: .1em; color: #685b59; }
+.game-group h2 { margin: 0; color: #8a5027; font-size: 22px; line-height: 1.1; font-weight: 800; letter-spacing: -.02em; text-shadow: 0 0 7px rgba(230,156,109,.8); }
+.game-group-heading > strong { color: #576339; font-size: 18px; line-height: 1; font-weight: 800; letter-spacing: .04em; white-space: nowrap; text-shadow: 0 0 6px rgba(191,204,153,.85); }
+.game-grid { display: grid; grid-template-columns: repeat(5, 172px); gap: 18px; justify-content: start; }
+.game-card { width: 172px; min-width: 172px; display: flex; flex-direction: column; border: 2px solid #1b1c1c; border-radius: 12px; background: #fcf9f8; overflow: hidden; box-shadow: none; transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease; }
+.game-card:hover { transform: translateY(-4px); box-shadow: none; border-color: #8a5027; }
+.game-cover { flex: 0 0 auto; width: 172px; height: 258px; aspect-ratio: 2 / 3 !important; border-bottom: 2px solid #1b1c1c; background: #f0eded; overflow: hidden; }
+.game-cover img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.game-card-info { flex: 0 0 auto; min-height: 0; padding: 8px 9px 10px; }
+.game-card-info h3 { margin: 0; color: #1b1c1c; font-size: 15px; line-height: 1.2; font-weight: 700; }
+.game-card-info p { margin: 2px 0 0; color: #52443b; font-size: 12px; line-height: 1.2; }
+.game-card-info > strong { display: inline-block; margin-top: 7px; padding: 5px 7px; color: #1b1c1c; font-size: 14px; line-height: 1; letter-spacing: .03em; border: 2px solid #1b1c1c; border-radius: 999px; background: #e69c6d; }
+@media (max-width: 900px) { .game-grid { display: grid; grid-template-columns: repeat(5, 172px); gap: 18px; justify-content: start; } }
+@media (max-width: 680px) { .game-main { padding-left: 20px; padding-right: 20px; } .game-experience-heading { align-items: flex-start; flex-direction: column; margin-bottom: 28px; } .game-total { grid-template-columns: auto auto auto auto; min-width: 0; } .game-group { padding: 18px; } .game-group-heading { display: flex; justify-content: flex-start; align-items: center; gap: 16px; margin-bottom: 18px; } .game-group-heading > div { display: flex; align-items: center; gap: 14px; min-width: 0; } .game-grid { display: grid; grid-template-columns: repeat(5, 172px); gap: 18px; justify-content: start; } .game-card-info { flex: 0 0 auto; min-height: 0; padding: 8px 9px 10px; } }
+</style></head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex flex-col font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar (Shared Component) -->
+<header class="w-full py-4 bg-background border-b-2 border-on-surface z-50 sticky top-0">
+<nav class="flex justify-between items-center max-w-7xl mx-auto px-container-padding">
+<div class="text-headline-md font-headline-md text-on-surface flex items-center gap-2"><div class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center neo-border"><span class="material-symbols-outlined text-[18px]">person</span></div>Brynn's Space</div>
+<div class="hidden md:flex items-center gap-8"><a class="text-label-bold font-label-bold text-on-surface hover:text-primary transition-colors" href="#works">我的作品</a><a class="text-label-bold font-label-bold text-on-surface hover:text-primary transition-colors" href="#about">关于我</a><a class="text-label-bold font-label-bold text-primary border-b-2 border-primary" href="#contact">游戏经历</a></div>
+<div class="flex items-center gap-4">
+<a href="%E8%AE%B8%E5%AD%90%E6%80%A1-%E7%94%B5%E5%AD%90%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%A6-%E7%A0%94%E4%B8%80-%E6%96%B0%E9%97%BB%E4%B8%8E%E4%BC%A0%E6%92%AD.pdf" target="_blank" rel="noopener" class="px-6 py-2 rounded-full border-2 border-on-surface bg-primary-container text-on-primary-container text-label-bold font-label-bold hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[4px_4px_0px_0px_rgba(27,28,28,1)] transition-all">下载简历</a>
+</div>
+</nav>
+</header>
+<!-- Main Content -->
+<main class="page-main game-main" aria-label="游戏经历"></main><script>
+const gameGroups = [
+  { number: '1', title: '开放世界 / 动作冒险', hours: '674.4 H · 8 款', games: [['Red Dead Redemption 2','荒野大镖客：救赎2','424.2 H','01_Red Dead Redemption 2.jpg'],['Cyberpunk 2077','赛博朋克2077','170.7 H','02_Cyberpunk 2077.jpg'],['Tomb Raider','古墓丽影','23.8 H','03_Tomb Raider.jpg'],['Death Stranding','死亡搁浅','14.0 H','04_Death Stranding.jpg'],['Forza Horizon 4','极限竞速：地平线4','12.7 H','05_Forza Horizon 4.jpg'],["Assassin's Creed Odyssey",'刺客信条：奥德赛','12.7 H',"06_Assassin's Creed Odyssey.jpg"],['Watch Dogs 2','看门狗2','11.5 H','07_Watch Dogs 2.jpg'],['The Witcher 3: Wild Hunt','巫师3：狂猎','4.8 H','08_The Witcher 3_ Wild Hunt.jpg']] },
+  { number: '2', title: '模拟经营 / 生活养成', hours: '371.0 H · 8 款', games: [['The Sims 4','模拟人生4','223.6 H','09_The Sims 4.jpg'],['Stardew Valley','星露谷物语','125.1 H','10_Stardew Valley.jpg'],['Volcano Princess','火山女儿','7.7 H','11_Volcano Princess.jpg'],['Dave the Diver','潜水员戴夫','6.4 H','12_Dave the Diver.jpg'],['Chef Life: A Restaurant Simulator','主厨生涯：餐厅模拟器','2.7 H','13_Chef Life_ A Restaurant Simulator.jpg'],['Chinese Parents','中国式家长','2.5 H','14_Chinese Parents.jpg'],['Brewmaster: Beer Brewing Simulator','酿酒大师','1.9 H','15_Brewmaster_ Beer Brewing Simulator.jpg'],['Cities: Skylines','城市：天际线','1.1 H','16_Cities_ Skylines.jpg']] },
+  { number: '3', title: '生存 / 建造 / 探索', hours: '138.7 H · 9 款', games: [['Terraria','泰拉瑞亚','67.1 H','20_Terraria.jpg'],['The Forest','森林','26.5 H','21_The Forest.jpg'],['theHunter: Call of the Wild','猎人：荒野的呼唤','20.0 H','22_theHunter_ Call of the Wild.jpg'],['Project Zomboid','僵尸毁灭工程','9.5 H','23_Project Zomboid.jpg'],['The Long Dark','漫漫长夜','6.5 H','24_The Long Dark.jpg'],["Don't Starve Together",'饥荒联机版','3.7 H',"25_Don't Starve Together.jpg"],['Raft','木筏求生','3.7 H','26_Raft.jpg'],['Arctico','北极圈','1.0 H','27_Arctico.jpg'],['This War of Mine','这是我的战争','0.7 H','28_This War of Mine.jpg']] },
+  { number: '4', title: '多人合作 / 社交', hours: '103.2 H · 8 款', games: [['It Takes Two','双人成行','29.6 H','30_It Takes Two.jpg'],['Overcooked! 2','胡闹厨房2','16.4 H','31_Overcooked! 2.jpg'],['A Way Out','逃出生天','6.0 H','32_A Way Out.jpg'],['Operation: Tango','代号：探戈','4.0 H','33_Operation_ Tango.jpg'],['Lethal Company','致命公司','1.7 H','34_Lethal Company.jpg'],['PEAK','巅峰','1.6 H','35_PEAK.jpg'],['Escape the Backrooms','逃离后室','1.1 H','36_Escape the Backrooms.jpg'],['Fish on the Desktop','桌面养鱼','42.8 H','29_Fish on the Desktop.jpg']] },
+  { number: '5', title: 'FPS / 射击', hours: '47.6 H · 2 款', games: [['Counter-Strike 2','CS2','40.6 H','37_Counter-Strike 2.jpg'],['COD16','使命召唤：现代战争','7.0 H','38_Call of Duty_ Modern Warfare.jpg']] },
+  { number: '6', title: '策略 / 恐怖解谜', hours: '23.8 H · 3 款', games: [["Sid Meier's Civilization VI",'文明6','15.5 H',"17_Sid Meier's Civilization VI.jpg"],['Resident Evil 4','生化危机4','6.0 H','18_Resident Evil 4.jpg'],['SOMA','活体脑细胞','2.3 H','19_SOMA.jpg']] },
+  { number: '7', title: '剧情 / 叙事体验', hours: '47.4 H · 10 款', games: [['Detroit: Become Human','底特律：变人','12.4 H','39_Detroit_ Become Human.jpg'],['Outer Wilds','星际拓荒','7.2 H','40_Outer Wilds.jpg'],['Spiritfarer','灵魂旅人','5.5 H','41_Spiritfarer.jpg'],['Dishonored 2','耻辱2','5.4 H','42_Dishonored 2.jpg'],['To the Moon','去月球','3.9 H','43_To the Moon.jpg'],['Life is Strange','奇异人生','3.7 H','44_Life is Strange.jpg'],['Rusty Lake Paradise','锈湖：天堂岛','2.9 H','45_Rusty Lake Paradise.jpg'],['What Remains of Edith Finch','艾迪芬奇的记忆','2.8 H','46_What Remains of Edith Finch.jpg'],['Before Your Eyes','在你面前','2.6 H','47_Before Your Eyes.jpg'],['ERROR143','ERROR143','1.0 H','48_ERROR143.jpg']] }
+];function gameCover(fileName) { return `../covers/${encodeURIComponent(fileName).replace(/%2F/g, '/')}`; }
+function renderGames() {
+  const main = document.querySelector('.game-main');
+  const renderCard = game => `<article class="game-card"><div class="game-cover"><img src="${gameCover(game[3])}" alt="${game[0]} cover" loading="lazy"></div><div class="game-card-info"><h3>${game[1]}</h3><p>${game[0]}</p><strong>${game[2]}</strong></div></article>`;
+  const renderGroup = (group, index, collapsible = true) => `<section class="game-group" data-game-group="${index}"><div class="game-group-heading"><div><span class="game-number">${group.number}</span><h2>${group.title}</h2></div><strong>${group.hours}</strong>${collapsible ? `<button class="game-toggle" type="button" aria-expanded="false" aria-label="展开${group.title}" data-toggle-group="${index}"><span class="material-symbols-outlined">expand_more</span></button>` : ''}</div><div class="game-grid game-grid-collapsed">${group.games.map((game, gameIndex) => `<div class="game-item ${collapsible && gameIndex >= 5 ? 'game-item-hidden' : ''}">${renderCard(game)}</div>`).join('')}</div></section>`;
+  const beforePair = gameGroups.slice(0, 4).map((group, index) => renderGroup(group, index, true)).join('');
+  const pair = `<div class="game-group-pair">${gameGroups.slice(4, 6).map((group, index) => renderGroup(group, index + 4, false)).join('')}</div>`;
+  const afterPair = gameGroups.slice(6).map((group, index) => renderGroup(group, index + 6, true)).join('');
+  main.innerHTML = `<div class="game-experience-shell"><div class="game-experience-heading"><div><p class="game-kicker">GAME EXPERIENCE</p><h1>游戏经历</h1><p class="game-intro">从开放世界到模拟经营，从单人叙事到多人合作，<br>我玩过的游戏并不局限于某一种类型。</p></div><div class="game-total"><div class="game-total-line">48 <span>GAMES</span></div><div class="game-total-line">1,406.1 <span>HOURS</span></div></div></div><div class="game-groups">${beforePair}${pair}${afterPair}</div></div>`;
+  main.querySelectorAll('[data-toggle-group]').forEach(button => button.addEventListener('click', () => {
+    const group = button.closest('[data-game-group]');
+    const expanded = group.classList.toggle('game-group-expanded');
+    button.setAttribute('aria-expanded', String(expanded));
+    button.setAttribute('aria-label', expanded ? `收起${gameGroups[Number(button.dataset.toggleGroup)].title}` : `展开${gameGroups[Number(button.dataset.toggleGroup)].title}`);
+  }));
+}
+renderGames();
+</script><footer class="page-footer w-full mt-section-gap rounded-t-3xl border-t-2 border-on-surface bg-surface-container">
+<div class="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto px-container-padding py-12 gap-base">
+<div class="text-headline-sm font-headline-sm text-on-surface flex items-center gap-2"><div class="w-6 h-6 rounded-full bg-secondary-fixed flex items-center justify-center neo-border"><span class="material-symbols-outlined text-[14px]">person</span></div>Brynn's Space</div>
+<div class="flex gap-4">
+<div class="relative group">
+<button class="hover-jiggle px-6 py-2 rounded-full border-2 border-on-surface bg-primary-container text-on-primary-container text-label-bold font-label-bold neo-shadow-hover transition-all duration-300 cursor-pointer" onclick="handleContactClick(this, '微信', 'Nine6ixteen')">微信</button>
+<div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform scale-95 group-hover:scale-100 origin-bottom bg-surface text-on-surface neo-border neo-shadow px-4 py-2 rounded-lg text-label-bold font-label-bold z-50 pointer-events-none whitespace-nowrap">
+            Nine6ixteen
+        </div>
+</div>
+<div class="relative group">
+<button class="hover-jiggle px-6 py-2 rounded-full border-2 border-on-surface bg-secondary-container text-on-secondary-container text-label-bold font-label-bold neo-shadow-hover transition-all duration-300 cursor-pointer" onclick="handleContactClick(this, '邮箱', 'llxs666@163.com')">邮箱</button>
+<div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform scale-95 group-hover:scale-100 origin-bottom bg-surface text-on-surface neo-border neo-shadow px-4 py-2 rounded-lg text-label-bold font-label-bold z-50 pointer-events-none whitespace-nowrap">
+            llxs666@163.com
+        </div>
+</div>
+<div class="relative group">
+<button class="hover-jiggle px-6 py-2 rounded-full border-2 border-on-surface bg-tertiary-container text-on-tertiary-container text-label-bold font-label-bold neo-shadow-hover transition-all duration-300 cursor-pointer" onclick="handleContactClick(this, '电话', '15828602614')">电话</button>
+<div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform scale-95 group-hover:scale-100 origin-bottom bg-surface text-on-surface neo-border neo-shadow px-4 py-2 rounded-lg text-label-bold font-label-bold z-50 pointer-events-none whitespace-nowrap">
+            15828602614
+        </div>
+</div>
+</div>
+<div class="text-body-md font-body-md text-on-surface-variant">Be secure with yourself ;)</div>
+</div>
+</footer>
+<!-- Footer (Shared Component) -->
+
+<div class="fixed bottom-40 left-1/2 transform -translate-x-1/2 bg-white text-on-surface px-6 py-3 rounded-lg border-2 border-on-surface neo-shadow opacity-0 transition-opacity duration-300 pointer-events-none z-50 text-label-bold font-label-bold" id="copy-toast">已经复制成功啦~</div>
+<script>
+    let toastTimeout;
+    function handleContactClick(button, defaultText, copyText) {
+        const textToCopy = copyText;
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            button.style.opacity = '0';
+            setTimeout(() => {
+                button.innerText = button.innerText === defaultText ? copyText : defaultText;
+                button.style.opacity = '1';
+            }, 200);
+            const toast = document.getElementById('copy-toast');
+            toast.classList.remove('opacity-0');
+            toast.classList.add('opacity-100');
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.remove('opacity-100');
+                toast.classList.add('opacity-0');
+            }, 2500);
+        }).catch(err => {
+            console.error('Failed to copy: ', err);
+        });
+    }
+</script>
+
+<script>
+(function () {
+  const routes = {
+    works: '_3/code.html',
+    contact: 'game/code.html',
+    about: '_4/code.html',
+    content: '_1/code.html',
+    presentation: '_2/code.html',
+    ai: 'ai/code.html'
+  };
+  document.addEventListener('click', function (event) {
+    const link = event.target.closest('a[href^="#"]');
+    if (!link || window.parent === window) return;
+    const route = link.getAttribute('href').slice(1);
+    if (!routes[route]) return;
+    event.preventDefault();
+    window.parent.postMessage({ type: 'stitch-route', route: route }, '*');
+  });
+})();
+</script><script>(function(){document.querySelectorAll("[data-download-resume]").forEach(function(button){button.addEventListener("click",function(){window.parent.postMessage({type:"download-resume"},"*");});});})();</script></body></html>
+
+
+
+
+
