@@ -1,0 +1,536 @@
+<!DOCTYPE html><html lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Content Planning - Brynn's Space</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "surface-variant": "#e4e2e1",
+                "error": "#ba1a1a",
+                "on-error": "#ffffff",
+                "tertiary-fixed-dim": "#d4c3bf",
+                "on-secondary-container": "#5b673d",
+                "on-surface-variant": "#52443b",
+                "on-secondary-fixed-variant": "#404b24",
+                "surface": "#fcf9f8",
+                "error-container": "#ffdad6",
+                "primary-container": "#e69c6d",
+                "surface-tint": "#8a5027",
+                "secondary-fixed": "#dbe8b4",
+                "on-secondary": "#ffffff",
+                "outline": "#85746a",
+                "on-secondary-fixed": "#151f00",
+                "surface-container": "#f0eded",
+                "on-background": "#1b1c1c",
+                "on-primary-container": "#66330c",
+                "tertiary-container": "#b9a9a6",
+                "secondary-fixed-dim": "#bfcc99",
+                "on-surface": "#1b1c1c",
+                "primary-fixed": "#ffdbc8",
+                "inverse-primary": "#ffb689",
+                "tertiary-fixed": "#f1dfdb",
+                "on-tertiary-fixed-variant": "#504441",
+                "secondary": "#576339",
+                "secondary-container": "#d8e6b1",
+                "surface-container-highest": "#e4e2e1",
+                "inverse-on-surface": "#f3f0ef",
+                "on-primary-fixed": "#321300",
+                "on-tertiary-fixed": "#231917",
+                "on-primary-fixed-variant": "#6e3912",
+                "on-primary": "#ffffff",
+                "surface-dim": "#dcd9d9",
+                "surface-container-high": "#eae7e7",
+                "on-error-container": "#93000a",
+                "on-tertiary-container": "#4a3e3b",
+                "outline-variant": "#d8c2b7",
+                "surface-bright": "#fcf9f8",
+                "primary": "#8a5027",
+                "surface-container-lowest": "#ffffff",
+                "tertiary": "#685b59",
+                "on-tertiary": "#ffffff",
+                "inverse-surface": "#303030",
+                "primary-fixed-dim": "#ffb689",
+                "surface-container-low": "#f6f3f2",
+                "background": "#fcf9f8"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "base": "8px",
+                "card-padding": "24px",
+                "container-padding": "40px",
+                "gutter": "24px",
+                "section-gap": "80px"
+        },
+        "fontFamily": {
+                "headline-lg-mobile": [
+                        "Plus Jakarta Sans"
+                ],
+                "label-bold": [
+                        "Plus Jakarta Sans"
+                ],
+                "body-md": [
+                        "Plus Jakarta Sans"
+                ],
+                "body-lg": [
+                        "Plus Jakarta Sans"
+                ],
+                "display": [
+                        "Plus Jakarta Sans"
+                ],
+                "label-md": [
+                        "Plus Jakarta Sans"
+                ],
+                "headline-lg": [
+                        "Plus Jakarta Sans"
+                ],
+                "headline-md": [
+                        "Plus Jakarta Sans"
+                ]
+        },
+        "fontSize": {
+                "headline-lg-mobile": [
+                        "28px",
+                        {
+                                "lineHeight": "1.2",
+                                "fontWeight": "600"
+                        }
+                ],
+                "label-bold": [
+                        "14px",
+                        {
+                                "lineHeight": "1",
+                                "letterSpacing": "0.05em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "body-md": [
+                        "16px",
+                        {
+                                "lineHeight": "1.6",
+                                "fontWeight": "400"
+                        }
+                ],
+                "body-lg": [
+                        "18px",
+                        {
+                                "lineHeight": "1.6",
+                                "fontWeight": "400"
+                        }
+                ],
+                "display": [
+                        "48px",
+                        {
+                                "lineHeight": "1.1",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "label-md": [
+                        "14px",
+                        {
+                                "lineHeight": "1",
+                                "fontWeight": "500"
+                        }
+                ],
+                "headline-lg": [
+                        "32px",
+                        {
+                                "lineHeight": "1.2",
+                                "fontWeight": "600"
+                        }
+                ],
+                "headline-md": [
+                        "24px",
+                        {
+                                "lineHeight": "1.3",
+                                "fontWeight": "600"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<style>
+        .neo-shadow { box-shadow: 4px 4px 0px 0px #242424; }
+        .neo-shadow-hover:hover { box-shadow: 2px 2px 0px 0px #242424; transform: translate(2px, 2px); }
+        .neo-shadow-active:active { box-shadow: 0px 0px 0px 0px #242424; transform: translate(4px, 4px); }
+        .neo-border { border: 2px solid #1b1c1c; }
+        
+        /* Carousel specific styles */
+        .carousel-item { transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1); }
+        .carousel-item.active { z-index: 10; opacity: 1; }
+        .carousel-item.prev, .carousel-item.next { z-index: 5; opacity: 0.6; cursor: pointer; }
+        
+        /* Hover Jiggle Animation for Footer */
+        .hover-jiggle {
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .group:nth-child(odd) .hover-jiggle:hover {
+            transform: scale(1.05) rotate(-3deg);
+        }
+        .group:nth-child(even) .hover-jiggle:hover {
+            transform: scale(1.05) rotate(3deg);
+        }
+    </style>
+<style>
+@media (min-width: 768px) {
+  body { padding-bottom: 104px !important; }
+  .page-main { padding-top: 0 !important; padding-bottom: 32px !important; gap: 16px !important; }
+  .page-footer { position: fixed !important; left: 0; right: 0; bottom: 0; margin-top: 0 !important; z-index: 40; }
+  .page-footer { border-bottom: 0 !important; border-left: 0 !important; border-right: 0 !important; }
+  .page-footer > div { padding-top: 16px !important; padding-bottom: 16px !important; }
+  .showcase-header { margin-bottom: 24px !important; }
+  .return-to-works { margin-top: 24px !important; }
+  .showcase-carousel { padding-top: 36px !important; padding-bottom: 16px !important; margin-bottom: 24px !important; }
+  .showcase-cards { height: 440px !important; margin-bottom: 16px !important; }
+  .showcase-carousel .carousel-item { width: 360px !important; height: 400px !important; }
+  .showcase-carousel .carousel-item.prev { margin-left: -40px; }
+  .showcase-carousel .carousel-item.next { margin-right: -40px; }
+  .showcase-carousel .carousel-item.active { width: 420px !important; height: 440px !important; }
+  .showcase-carousel .carousel-item.active { background-color: #e69c6d !important; border-color: #1b1c1c !important; }
+  .showcase-carousel .carousel-item h3 { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .showcase-carousel .carousel-item.active { z-index: 20 !important; }
+  .showcase-carousel .carousel-item.prev, .showcase-carousel .carousel-item.next { z-index: 5 !important; }
+  .showcase-carousel .carousel-item.active > div:last-child { background-color: #e69c6d !important; }
+  .showcase-detail { padding: 24px !important; margin-top: 0 !important; }
+  .showcase-detail.detail-enter { animation: detailEnter 360ms cubic-bezier(0.22, 1, 0.36, 1); }
+  @keyframes detailEnter { from { opacity: 0.35; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  .home-hero { min-height: 560px !important; padding-top: 32px !important; padding-bottom: 32px !important; }
+  .home-image-card { width: 72% !important; height: 72% !important; }
+  .ai-showcase-video { max-height: 300px !important; }
+  .ai-detail-grid { margin-bottom: 24px !important; }
+}
+</style></head>
+<body class="bg-surface text-on-surface min-h-screen font-body-md overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="w-full py-4 bg-background border-b-2 border-on-surface z-50 sticky top-0">
+<nav class="flex justify-between items-center max-w-7xl mx-auto px-container-padding">
+<div class="text-headline-md font-headline-md text-on-surface flex items-center gap-2"><div class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center neo-border"><span class="material-symbols-outlined text-[18px]">person</span></div>Brynn's Space</div>
+<div class="hidden md:flex items-center gap-8"><a class="text-label-bold font-label-bold text-primary border-b-2 border-primary" href="#works">我的作品</a><a class="text-label-bold font-label-bold text-on-surface hover:text-primary transition-colors" href="#about">关于我</a><a class="text-label-bold font-label-bold text-on-surface hover:text-primary transition-colors" href="#contact">游戏经历</a></div>
+<div class="flex items-center gap-4">
+<a href="%E8%AE%B8%E5%AD%90%E6%80%A1-%E7%94%B5%E5%AD%90%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%A6-%E7%A0%94%E4%B8%80-%E6%96%B0%E9%97%BB%E4%B8%8E%E4%BC%A0%E6%92%AD.pdf" target="_blank" rel="noopener" class="px-6 py-2 rounded-full border-2 border-on-surface bg-primary-container text-on-primary-container text-label-bold font-label-bold hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[4px_4px_0px_0px_rgba(27,28,28,1)] transition-all">下载简历</a>
+</div>
+</nav>
+</header>
+<!-- Main Content Area -->
+<main class="page-main max-w-[1280px] mx-auto px-container-padding py-section-gap flex flex-col items-center">
+<a href="#works" class="return-to-works self-start mb-6 inline-flex items-center gap-2 rounded-full bg-surface px-5 py-3 text-on-surface text-label-bold font-label-bold neo-border neo-shadow transition-all hover:bg-primary-container hover:text-on-primary-container hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none"><span class="material-symbols-outlined text-[20px]">arrow_back</span>返回我的作品</a>
+<!-- Header Section -->
+<div class="showcase-header text-center mb-16 relative">
+<div class="absolute -top-10 -left-10 w-20 h-20 bg-secondary rounded-full neo-border neo-shadow -z-10 opacity-50"></div>
+<div class="absolute -bottom-5 -right-5 w-12 h-12 bg-primary-container rotate-45 neo-border neo-shadow -z-10 opacity-50"></div>
+<h1 class="font-display text-display text-on-surface mb-4 relative inline-block">
+                内容策划
+                <svg class="absolute -bottom-2 left-0 w-full h-4 text-primary" preserveAspectRatio="none" viewBox="0 0 100 10">
+<path d="M0 5 Q 50 10 100 0" fill="none" stroke="currentColor" stroke-width="4" vector-effect="non-scaling-stroke"></path>
+</svg>
+</h1>
+<p class="font-headline-md text-headline-md font-bold text-on-surface-variant mt-6">让故事被人记住</p>
+<!-- Carousel Section -->
+<div class="showcase-carousel w-full relative py-12 flex flex-col justify-center items-center mb-12">
+<!-- Cards Container -->
+<div class="showcase-cards relative w-full max-w-4xl h-[400px] flex justify-center items-center perspective-1000 mb-8">
+<div class="pointer-hint fixed hidden pointer-events-none z-50 px-3 py-2 rounded-lg bg-surface text-on-surface neo-border neo-shadow text-label-md font-label-md" id="card-hover-hint">点击可查看详情</div>
+<!-- Card 1: prev -->
+<div class="carousel-item prev absolute left-0 md:left-[-56px] w-[280px] md:w-[320px] h-[360px] bg-surface-container rounded-2xl neo-border neo-shadow overflow-hidden cursor-pointer" id="card-0">
+<div class="w-full h-3/4 border-b-2 border-on-surface bg-surface-variant relative">
+<div class="w-full h-full bg-cover bg-center" data-alt="A highly detailed illustration of a futuristic business meeting room with holographic graphs and charts floating above a sleek table. The aesthetic is modern, bright, and slightly whimsical, using soft neo-brutalist solid colors with thick outlines. The color palette features a mix of warm terracotta and cool olive greens. High quality, crisp lines." style="background-image: url('../content-planning/business-plan/第1页.jpg')"></div>
+</div>
+<div class="w-full h-1/4 p-4 flex items-center justify-center bg-surface-bright">
+<h3 class="font-headline-md text-headline-md text-on-surface text-center">商业计划书撰写<br><span class="text-sm font-medium text-on-surface-variant">（仅展示节选页面）</span></h3>
+</div>
+</div>
+<!-- Card 2: active -->
+<div class="carousel-item active absolute z-10 w-[300px] md:w-[380px] h-[400px] bg-surface-bright rounded-2xl neo-border neo-shadow overflow-hidden" id="card-1">
+<div class="w-full h-2/3 border-b-2 border-on-surface relative">
+<div class="w-full h-full bg-cover bg-center" data-alt="A vibrant, dynamic scene showing a stylized video game character interacting with a glowing digital interface or social media feed. The art style is playful neo-brutalism, featuring rounded shapes, thick black outlines, and flat shadows. Colors include bold oranges, earthy greens, and contrasting stark whites. High energy, engaging composition." style="background-image: url('../content-planning/shanhai-character-journal/小李.png')"></div>
+</div>
+<div class="w-full h-1/3 p-6 flex flex-col items-center justify-center bg-primary-container/20">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">《山海奇旅》角色手账系列策划</h3>
+
+</div>
+</div>
+<!-- Card 3: next -->
+<div class="carousel-item next absolute right-0 md:right-[-56px] w-[280px] md:w-[320px] h-[360px] bg-surface-container rounded-2xl neo-border neo-shadow overflow-hidden cursor-pointer" id="card-2">
+<div class="w-full h-3/4 border-b-2 border-on-surface bg-secondary-container relative">
+<div class="w-full h-full bg-cover bg-center" data-alt="Two diverse stylized characters shaking hands over a giant puzzle piece, symbolizing collaboration and brand synergy. The environment is minimalist and conceptual, heavily relying on soft neo-brutalist design cues: 2px thick black borders, solid pastel block colors, and hard structural drop shadows. Playful geometric shapes float in the background." style="background-image: url('../content-planning/dave-kfc-campaign/封面.jpg')"></div>
+</div>
+<div class="w-full h-1/4 p-4 flex items-center justify-center bg-surface-bright">
+<h3 class="font-headline-md text-headline-md text-on-surface text-center">《潜水员戴夫》× KFC联动推文</h3>
+</div>
+</div>
+</div>
+<!-- Navigation Controls -->
+<div class="flex justify-center space-x-6 z-20 mt-4">
+<button class="w-14 h-14 bg-surface rounded-full neo-border neo-shadow neo-shadow-hover neo-shadow-active flex items-center justify-center text-on-surface hover:text-primary transition-all" onclick="shiftCarousel('prev')">
+<span class="material-symbols-outlined text-3xl">arrow_back</span>
+</button>
+<button class="w-14 h-14 bg-surface rounded-full neo-border neo-shadow neo-shadow-hover neo-shadow-active flex items-center justify-center text-on-surface hover:text-primary transition-all" onclick="shiftCarousel('next')">
+<span class="material-symbols-outlined text-3xl">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Detail Text Area -->
+<div class="showcase-detail max-w-4xl mx-auto p-8 bg-surface-container-low rounded-2xl neo-border neo-shadow relative" id="project-detail">
+<div class="absolute -top-3 -right-3 w-8 h-8 bg-primary rounded-full neo-border"></div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-4" id="detail-title">《山海奇旅》角色手账系列策划</h2><a class="hidden inline-flex items-center gap-2 mb-4 text-primary font-label-bold hover:underline" id="detail-link" href="https://mp.weixin.qq.com/s/UN85Y2hurDhzkciwvy-S1A?from=singlemessage&amp;isappinstalled=0&amp;scene=1&amp;clicktime=1786950013&amp;enterid=1786950013" target="_blank" rel="noopener">推文链接直达：潜水员戴夫x肯德基<span class="material-symbols-outlined text-[18px]">open_in_new</span></a>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6" id="detail-desc">在网易互娱《山海奇旅》首测宣传期间，负责「角色类手账」栏目的选题策划与内容执行。围绕游戏角色与世界观进行选题构思，拆解宣传物料需求，完成实机视频录制与内容制作，累计产出10+套宣传素材，相关内容累计获得3000+点赞。结合小红书、B站、抖音等平台特点进行差异化运营，在职期间推动账号涨粉3w+。</p>
+
+<div class="flex space-x-3" id="detail-tags">
+<span class="px-3 py-1 bg-secondary-container neo-border rounded-full font-label-md text-label-md text-on-secondary-container">游戏内容策划</span>
+<span class="px-3 py-1 bg-tertiary-container neo-border rounded-full font-label-md text-label-md text-on-tertiary-container">栏目策划</span>
+<span class="px-3 py-1 bg-surface neo-border rounded-full font-label-md text-label-md text-on-surface">官号运营</span>
+<span class="px-3 py-1 bg-secondary-container neo-border rounded-full font-label-md text-label-md text-on-secondary-container">多平台分发</span>
+</div>
+</div>
+</main>
+<!-- Footer -->
+
+<!-- Toast Notification -->
+<footer class="page-footer w-full mt-section-gap rounded-t-3xl border-t-2 border-on-surface bg-surface-container">
+<div class="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto px-container-padding py-12 gap-base">
+<div class="text-headline-sm font-headline-sm text-on-surface flex items-center gap-2"><div class="w-6 h-6 rounded-full bg-secondary-fixed flex items-center justify-center neo-border"><span class="material-symbols-outlined text-[14px]">person</span></div>Brynn's Space</div>
+<div class="flex gap-4">
+<div class="relative group">
+<button class="hover-jiggle px-6 py-2 rounded-full border-2 border-on-surface bg-primary-container text-on-primary-container text-label-bold font-label-bold neo-shadow-hover transition-all duration-300 cursor-pointer" onclick="handleContactClick(this, '微信', 'Nine6ixteen')">微信</button>
+<div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform scale-95 group-hover:scale-100 origin-bottom bg-surface text-on-surface neo-border neo-shadow px-4 py-2 rounded-lg text-label-bold font-label-bold z-50 pointer-events-none whitespace-nowrap">
+            Nine6ixteen
+        </div>
+</div>
+<div class="relative group">
+<button class="hover-jiggle px-6 py-2 rounded-full border-2 border-on-surface bg-secondary-container text-on-secondary-container text-label-bold font-label-bold neo-shadow-hover transition-all duration-300 cursor-pointer" onclick="handleContactClick(this, '邮箱', 'llxs666@163.com')">邮箱</button>
+<div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform scale-95 group-hover:scale-100 origin-bottom bg-surface text-on-surface neo-border neo-shadow px-4 py-2 rounded-lg text-label-bold font-label-bold z-50 pointer-events-none whitespace-nowrap">
+            llxs666@163.com
+        </div>
+</div>
+<div class="relative group">
+<button class="hover-jiggle px-6 py-2 rounded-full border-2 border-on-surface bg-tertiary-container text-on-tertiary-container text-label-bold font-label-bold neo-shadow-hover transition-all duration-300 cursor-pointer" onclick="handleContactClick(this, '电话', '15828602614')">电话</button>
+<div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform scale-95 group-hover:scale-100 origin-bottom bg-surface text-on-surface neo-border neo-shadow px-4 py-2 rounded-lg text-label-bold font-label-bold z-50 pointer-events-none whitespace-nowrap">
+            15828602614
+        </div>
+</div>
+</div>
+<div class="text-body-md font-body-md text-on-surface-variant">Be secure with yourself ;)</div>
+</div>
+</footer>
+<div class="fixed bottom-40 left-1/2 transform -translate-x-1/2 bg-white text-on-surface px-6 py-3 rounded-lg neo-border neo-shadow opacity-0 transition-opacity duration-300 pointer-events-none z-50 text-label-bold font-label-bold" id="copy-toast">
+    已经复制成功啦~
+</div>
+<!-- Fullscreen Project Gallery -->
+<div class="fixed inset-0 z-50 hidden items-center justify-center bg-on-surface/90 p-6" id="gallery-modal">
+<button class="absolute right-6 top-6 w-12 h-12 rounded-full bg-surface neo-border neo-shadow flex items-center justify-center" type="button" onclick="closeGallery()"><span class="material-symbols-outlined">close</span></button>
+<button class="absolute left-6 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-surface neo-border neo-shadow flex items-center justify-center" type="button" onclick="moveGallery(-1)"><span class="material-symbols-outlined text-3xl">arrow_back</span></button>
+<div class="max-w-5xl max-h-[85vh] flex flex-col items-center gap-4">
+<img class="max-h-[75vh] max-w-full object-contain rounded-2xl neo-border neo-shadow bg-surface" id="gallery-modal-image" alt="">
+<div class="px-4 py-2 rounded-full bg-surface neo-border text-label-bold font-label-bold" id="gallery-modal-caption"></div>
+</div>
+<button class="absolute right-6 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-surface neo-border neo-shadow flex items-center justify-center" type="button" onclick="moveGallery(1)"><span class="material-symbols-outlined text-3xl">arrow_forward</span></button>
+</div>
+<script>
+        // Simple carousel logic for visual demonstration
+        const details = [
+            {
+                title: "商业计划书撰写",
+                desc: "围绕环保、智能、舒适与疗愈的产品理念，策划木结构装配式建筑与智能家居结合的创业项目，担任项目队长。主导完成3万字商业计划书内容策划，梳理市场需求、产品优势、商业模式与发展规划的信息结构，负责路演答辩内容组织与表达设计。项目获“创青春”全国大学生创业大赛省级银奖。",
+                tags: ["商业计划书", "项目策划", "路演答辩", "创业竞赛"]
+            },
+            {
+                title: "《山海奇旅》角色手账系列策划",
+                desc: "在网易互娱《山海奇旅》首测宣传期间，负责「角色类手账」栏目的选题策划与内容执行。围绕游戏角色与世界观进行选题构思，拆解宣传物料需求，完成实机视频录制与内容制作，累计产出10+套宣传素材，相关内容累计获得3000+点赞。结合小红书、B站、抖音等平台特点进行差异化运营，在职期间推动账号涨粉3w+。",
+                tags: ["游戏内容策划", "栏目策划", "官号运营", "多平台分发"]
+            },
+            {
+                title: "《潜水员戴夫》× KFC联动推文",
+                desc: "在TapTap市场推广实习期间，参与《潜水员戴夫》与KFC的品牌联动项目，负责公众号联动推文的内容策划与传播落地。围绕游戏玩法、联动信息与品牌调性梳理内容结构，协助完成H5页面与推文素材制作，相关推文浏览量突破8000。同期参与联动短视频内容制作，协助产出单条点赞超6000的抖音传播视频。",
+                tags: ["品牌联动", "H5内容策划", "公众号传播", "游戏营销"]
+            }
+        ];
+        
+        let currentIndex = 1; // Start with the middle item
+        const projectGallery = {
+            business: ["../content-planning/business-plan/第1页.jpg", "../content-planning/business-plan/第2页.jpg", "../content-planning/business-plan/第14页.jpg", "../content-planning/business-plan/第25页.jpg", "../content-planning/business-plan/第58页.jpg"],
+            shanhai: [
+                "../content-planning/shanhai-character-journal/小李.png",
+                "../content-planning/shanhai-character-journal/小布.png",
+                "../content-planning/shanhai-character-journal/星期五.jpg",
+                "../content-planning/shanhai-character-journal/李超燃.png",
+                "../content-planning/shanhai-character-journal/老贾.jpg",
+                "../content-planning/shanhai-character-journal/蒲悠悠.png",
+                "../content-planning/shanhai-character-journal/可可替换-.jpg"
+            ],
+            dave: ["../content-planning/dave-kfc-campaign/KFCxDave.jpg"]
+        };
+        const hoverHint = document.getElementById('card-hover-hint');
+        const carouselCards = [document.getElementById('card-0'), document.getElementById('card-1'), document.getElementById('card-2')];
+        carouselCards.forEach((card) => {
+            card.addEventListener('mouseenter', () => {
+                if (card.classList.contains('active')) hoverHint.classList.remove('hidden');
+            });
+            card.addEventListener('mousemove', (event) => {
+                if (!card.classList.contains('active')) return;
+                hoverHint.style.left = `${event.clientX + 16}px`;
+                hoverHint.style.top = `${event.clientY + 16}px`;
+            });
+            card.addEventListener('mouseleave', () => hoverHint.classList.add('hidden'));
+        });
+
+        let galleryProjectKey = 'shanhai';
+        let galleryImageIndex = 0;
+
+        function openProject(index) {
+            galleryProjectKey = ['business', 'shanhai', 'dave'][index];
+            galleryImageIndex = 0;
+            openGallery();
+            document.getElementById('project-detail').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function openGallery() {
+            const imagePath = projectGallery[galleryProjectKey][galleryImageIndex];
+            const image = document.getElementById('gallery-modal-image');
+            image.src = imagePath.startsWith('../') ? imagePath : `https://placehold.co/1280x900/f1dfdb/1b1c1c?text=${encodeURIComponent(imagePath)}`;
+            image.alt = imagePath;
+            document.getElementById('gallery-modal-caption').innerText = `${galleryImageIndex + 1} / ${projectGallery[galleryProjectKey].length}`;
+            document.getElementById('gallery-modal').classList.remove('hidden');
+            document.getElementById('gallery-modal').classList.add('flex');
+        }
+
+        function closeGallery() {
+            const modal = document.getElementById('gallery-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function moveGallery(step) {
+            const images = projectGallery[galleryProjectKey];
+            galleryImageIndex = (galleryImageIndex + step + images.length) % images.length;
+            openGallery();
+        }
+        function bindActiveCard() {
+            const cards = [
+                document.getElementById('card-0'),
+                document.getElementById('card-1'),
+                document.getElementById('card-2')
+            ];
+            cards.forEach((card, index) => {
+                if (!card) return;
+                card.onclick = index === currentIndex ? () => openProject(index) : null;
+            });
+        }
+        function shiftCarousel(direction) {
+            if(direction === 'prev') {
+                currentIndex = currentIndex > 0 ? currentIndex - 1 : 2;
+            } else {
+                currentIndex = currentIndex < 2 ? currentIndex + 1 : 0;
+            }
+            
+            const cards = [
+                document.getElementById('card-0'),
+                document.getElementById('card-1'),
+                document.getElementById('card-2')
+            ];
+
+            cards.forEach((card, i) => {
+                card.className = "carousel-item absolute bg-surface rounded-2xl neo-border neo-shadow overflow-hidden transition-all duration-500 cursor-pointer";
+                
+                card.onclick = null;
+                
+                if (i === currentIndex) {
+                    card.classList.add('active', 'z-10', 'w-[300px]', 'md:w-[380px]', 'h-[400px]', 'bg-primary-container');
+                    card.onclick = () => { openProject(i); };
+                } else if (i === (currentIndex === 0 ? 2 : currentIndex - 1)) {
+                    card.classList.add('prev', 'left-0', 'md:left-[-56px]', 'w-[280px]', 'md:w-[320px]', 'h-[360px]');
+                } else {
+                    card.classList.add('next', 'right-0', 'md:right-[-56px]', 'w-[280px]', 'md:w-[320px]', 'h-[360px]');
+                }
+            });
+            
+            const detailPanel = document.getElementById('project-detail');
+            detailPanel.classList.remove('detail-enter');
+            void detailPanel.offsetWidth;
+            detailPanel.classList.add('detail-enter');
+
+            const detailData = details[currentIndex];
+            document.getElementById('detail-title').innerText = detailData.title;
+            document.getElementById('detail-desc').innerText = detailData.desc;
+            const detailLink = document.getElementById('detail-link');
+            if (detailLink) {
+                detailLink.classList.toggle('hidden', currentIndex !== 2);
+            }
+            
+            const tagsHtml = detailData.tags.map((tag, i) => {
+                const colors = ['bg-secondary-container text-on-secondary-container', 'bg-tertiary-container text-on-tertiary-container', 'bg-surface text-on-surface'];
+                return `<span class="px-3 py-1 ${colors[i % 3]} neo-border rounded-full font-label-md text-label-md">${tag}</span>`;
+            }).join('');
+            document.getElementById('detail-tags').innerHTML = tagsHtml;
+        }
+
+        bindActiveCard();
+
+        let toastTimeout;
+        function handleContactClick(button, defaultText, copyText) {
+            // Determine what text to copy
+            const textToCopy = copyText;
+            
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                // Fade out current text
+                button.style.opacity = '0';
+                
+                setTimeout(() => {
+                    // Toggle text content
+                    button.innerText = button.innerText === defaultText ? copyText : defaultText;
+                    // Fade back in
+                    button.style.opacity = '1';
+                }, 200);
+
+                // Show toast notification
+                const toast = document.getElementById('copy-toast');
+                toast.classList.remove('opacity-0');
+                toast.classList.add('opacity-100');
+                
+                // Clear existing timeout to reset fade out if clicked rapidly
+                clearTimeout(toastTimeout);
+                toastTimeout = setTimeout(() => {
+                    toast.classList.remove('opacity-100');
+                    toast.classList.add('opacity-0');
+                }, 2500);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+    </script>
+
+
+<script>
+(function () {
+  const routes = {
+    works: '_3/code.html',
+    contact: 'game/code.html',
+    about: '_4/code.html',
+    content: '_1/code.html',
+    presentation: '_2/code.html',
+    ai: 'ai/code.html'
+  };
+  document.addEventListener('click', function (event) {
+    const link = event.target.closest('a[href^="#"]');
+    if (!link || window.parent === window) return;
+    const route = link.getAttribute('href').slice(1);
+    if (!routes[route]) return;
+    event.preventDefault();
+    window.parent.postMessage({ type: 'stitch-route', route: route }, '*');
+  });
+})();
+</script><script>(function(){document.querySelectorAll("[data-download-resume]").forEach(function(button){button.addEventListener("click",function(){window.parent.postMessage({type:"download-resume"},"*");});});})();</script></body></html>
+
+
