@@ -6,27 +6,52 @@
   <title>落叶成卦 · Brynn's Space</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
   <style>
     :root { --ink:#1b1c1c; --paper:#fcf9f8; --green:#d8e6b1; --orange:#e69c6d; --muted:#776f69; --line:#1b1c1c; }
     * { box-sizing:border-box; }
-    body { margin:0; min-height:100vh; display:flex; flex-direction:column; color:var(--ink); background:var(--paper); font-family:"Plus Jakarta Sans","Noto Sans SC",sans-serif; }
-    .site-header { position:sticky; top:0; z-index:10; background:var(--paper); border-bottom:2px solid var(--ink); }
-    .site-nav { width:min(1280px,100%); margin:auto; padding:14px 32px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
-    .brand { display:flex; align-items:center; gap:10px; flex-shrink:0; font-size:22px; font-weight:700; }
-    .brand-icon { width:32px; height:32px; display:grid; place-items:center; background:var(--green); border:2px solid var(--ink); border-radius:50%; }
-    .nav-links { display:flex; gap:28px; align-items:center; }
-    .nav-links a { color:var(--ink); text-decoration:none; font-size:14px; font-weight:700; white-space:nowrap; }
+    body { margin:0; min-height:100vh; display:flex; flex-direction:column; color:var(--ink); background:var(--paper); font-family:"Plus Jakarta Sans",sans-serif; font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+    .site-header { position:sticky; top:0; z-index:50; width:100%; background:var(--paper); border-bottom:2px solid var(--ink); }
+    .site-nav { width:100%; max-width:1280px; margin:auto; padding:16px 40px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+    .brand { display:flex; align-items:center; gap:8px; flex-shrink:0; font-size:24px; line-height:1.3; font-weight:600; }
+    .brand-icon { width:32px; height:32px; display:grid; place-items:center; flex:0 0 32px; background:var(--green); border:2px solid var(--ink); border-radius:50%; }
+    .brand-icon .material-symbols-outlined { font-size:18px; line-height:1; }
+    .nav-links { display:none; gap:32px; align-items:center; }
+    .nav-links a { color:var(--ink); text-decoration:none; font-size:14px; line-height:1; letter-spacing:.05em; font-weight:700; white-space:nowrap; transition:color .2s ease; }
     .nav-links a:hover,.nav-links a[aria-current="page"] { color:#8a5027; }
     .nav-links a[aria-current="page"] { border-bottom:2px solid #8a5027; padding-bottom:4px; }
-    .resume-link { color:#66330c; background:var(--orange); border:2px solid var(--ink); border-radius:999px; padding:10px 20px; font-size:14px; font-weight:700; text-decoration:none; white-space:nowrap; }
+    .resume-link { color:#66330c; background:var(--orange); border:2px solid var(--ink); border-radius:999px; padding:8px 24px; font-size:14px; line-height:1; letter-spacing:.05em; font-weight:700; text-decoration:none; white-space:nowrap; transition:transform .2s,box-shadow .2s; }
+    .resume-link:hover { transform:translate(-2px,-2px); box-shadow:4px 4px 0 var(--ink); }
     main { width:min(1120px,100%); margin:0 auto; padding:42px 30px 56px; flex:1; }
     .intro { text-align:center; margin:0 auto 28px; max-width:740px; }
     .eyebrow { margin:0 0 10px; color:#8a5027; font-size:12px; font-weight:700; letter-spacing:.16em; }
     h1 { margin:0; font-size:clamp(32px,4vw,48px); line-height:1.15; }
     .intro-copy { margin:12px 0 0; color:#625c57; font-size:16px; line-height:1.75; }
     .experience-note { display:inline-flex; margin-top:14px; padding:7px 12px; border:1.5px solid var(--ink); border-radius:999px; background:#f1dfdb; color:#5b4944; font-size:12px; font-weight:600; }
-    .feature-grid { display:grid; grid-template-columns:minmax(0,1.02fr) minmax(320px,.98fr); gap:22px; align-items:stretch; }
+    .feature-grid { display:grid; grid-template-columns:minmax(0,1.08fr) minmax(320px,.92fr); gap:20px; align-items:stretch; }
+    .activity-screen[hidden] { display:none; }
+    .screen-stage { position:relative; display:flow-root; transition:height .56s cubic-bezier(.2,.75,.2,1); }
+    .intro-screen,.activity-screen { transition:opacity .34s ease,transform .56s cubic-bezier(.2,.75,.2,1); will-change:opacity,transform; }
+    .screen-pre-enter { opacity:0; transform:translateY(22px); }
+    .screen-leave { opacity:0; transform:translateY(-16px); pointer-events:none; }
+    .screen-enter { opacity:1; transform:translateY(0); }
+    .intro-screen { max-width:980px; margin:0 auto; }
+    .intro-demo { display:grid; grid-template-columns:1fr 1fr; gap:22px; align-items:stretch; margin-top:30px; }
+    .demo-panel { min-height:320px; padding:24px 28px; border:2px solid var(--ink); border-radius:22px; box-shadow:6px 6px 0 var(--ink); text-align:left; }
+    .demo-panel h2 { margin:0; font-size:21px; }
+    .demo-copy { margin:8px 0 0; color:#625c57; font-size:15px; line-height:1.7; }
+    .demo-leaves { display:grid; gap:10px; margin-top:18px; }
+    .demo-leaf-row { min-height:64px; display:grid; grid-template-columns:62px 1fr; align-items:center; gap:14px; padding:5px 14px; border:1.5px solid rgba(27,28,28,.22); border-radius:15px; background:rgba(255,255,255,.7); }
+    .demo-leaf { width:38px; height:55px; justify-self:center; filter:brightness(0) saturate(100%) invert(51%) sepia(29%) saturate(552%) hue-rotate(43deg) brightness(93%); }
+    .demo-yang { width:58px; height:8px; border-radius:3px; background:var(--ink); }
+    .demo-step { display:grid; grid-template-columns:40px 1fr; gap:12px; align-items:start; padding:16px 0; border-bottom:1px solid rgba(27,28,28,.18); }
+    .demo-step:last-of-type { border-bottom:0; }
+    .step-number { width:34px; height:34px; display:grid; place-items:center; border:1.5px solid var(--ink); border-radius:50%; background:var(--green); font-weight:700; }
+    .demo-step strong { display:block; margin:0 0 4px; font-size:16px; }
+    .demo-step p { margin:0; color:#625c57; font-size:14px; line-height:1.6; }
+    .start-button { display:inline-flex; align-items:center; justify-content:center; margin-top:14px; padding:11px 23px; border:2px solid var(--ink); border-radius:999px; background:var(--orange); color:#66330c; font-family:inherit; font-size:15px; font-weight:700; text-decoration:none; box-shadow:3px 3px 0 var(--ink); cursor:pointer; }
+    .back-button { appearance:none; border:0; padding:4px 0; background:transparent; color:#754524; font-family:inherit; font-size:14px; font-weight:700; text-decoration:underline; text-underline-offset:4px; cursor:pointer; }
     .panel { border:2px solid var(--ink); border-radius:22px; box-shadow:6px 6px 0 var(--ink); overflow:hidden; }
     .ritual-panel { background:#f1f4e7; padding:22px 24px 20px; }
     .panel-heading { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
@@ -34,14 +59,16 @@
     .panel-kicker { margin:5px 0 0; color:var(--muted); font-size:13px; }
     .round-label { border:1.5px solid var(--ink); border-radius:999px; padding:6px 10px; background:white; font-size:12px; white-space:nowrap; }
     .leaf-stack { display:grid; gap:7px; margin:20px 0 16px; }
-    .leaf-row { min-height:92px; display:grid; grid-template-columns:48px 1fr 74px; align-items:center; gap:12px; border:1.5px solid rgba(27,28,28,.24); border-radius:16px; padding:4px 16px; background:rgba(255,255,255,.68); }
+    .leaf-row { min-height:98px; display:grid; grid-template-columns:54px minmax(0,1fr) 58px; align-items:center; gap:12px; border:1.5px solid rgba(27,28,28,.24); border-radius:16px; padding:7px 16px; background:rgba(255,255,255,.68); }
     .line-name { color:#6b625c; font-size:12px; font-weight:600; }
     .leaf-drop { width:70px; height:82px; display:grid; place-items:center; justify-self:center; opacity:0; transform:translateY(-130px) translateX(var(--scatter,0px)) rotate(var(--spin,90deg)); }
     .leaf-row.is-falling .leaf-drop { animation:leaf-fall .82s cubic-bezier(.21,.7,.31,1) forwards; }
-    .leaf-token { width:52px; height:76px; position:relative; transform-style:preserve-3d; transition:transform .72s cubic-bezier(.2,.75,.2,1); }
-    .leaf-token.is-yin { transform:rotateY(180deg); }
-    .leaf-face { position:absolute; inset:0; display:grid; place-items:center; backface-visibility:hidden; }
-    .leaf-face.back { transform:rotateY(180deg); }
+    .leaf-token { width:52px; height:76px; position:relative; }
+    .leaf-face { position:absolute; inset:0; display:grid; place-items:center; backface-visibility:hidden; -webkit-backface-visibility:hidden; transition:transform .56s cubic-bezier(.2,.75,.2,1),opacity .24s ease; }
+    .leaf-face.front { opacity:1; transform:rotateY(0deg); }
+    .leaf-face.back { opacity:0; transform:rotateY(-90deg); }
+    .leaf-token.is-yin .leaf-face.front { opacity:0; transform:rotateY(90deg); }
+    .leaf-token.is-yin .leaf-face.back { opacity:1; transform:rotateY(0deg); }
     .leaf-asset,.leaf-veins { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; }
     .leaf-face.front .leaf-asset { filter:brightness(0) saturate(100%) invert(51%) sepia(29%) saturate(552%) hue-rotate(43deg) brightness(93%); }
     .leaf-face.back .leaf-asset { filter:brightness(0) saturate(100%) invert(60%) sepia(41%) saturate(615%) hue-rotate(331deg) brightness(97%); }
@@ -57,9 +84,9 @@
     .roll-button:active { transform:translate(1px,1px); box-shadow:1px 1px 0 var(--ink); }
     .roll-button:disabled { opacity:.65; cursor:wait; }
     .roll-hint { color:#6b625c; font-size:12px; line-height:1.5; text-align:right; }
-    .result-panel { min-height:100%; background:#fff8f2; padding:24px 26px; display:flex; flex-direction:column; }
+    .result-panel { min-height:0; background:#fff8f2; padding:24px 26px; display:flex; flex-direction:column; }
     .result-top { display:flex; align-items:center; gap:16px; padding-bottom:18px; border-bottom:1.5px solid rgba(27,28,28,.2); }
-    .trigram-symbol { flex:0 0 64px; width:64px; height:76px; display:grid; place-items:center; border:2px solid var(--ink); border-radius:14px; background:var(--green); font-family:serif; font-size:52px; line-height:1; }
+    .trigram-symbol { flex:0 0 76px; width:76px; height:76px; display:grid; place-items:center; padding-bottom:10px; border:2px solid var(--ink); border-radius:14px; background:var(--green); font-family:serif; font-size:52px; line-height:1; }
     .result-name { margin:0; font-size:27px; line-height:1.2; }
     .result-nature { margin:6px 0 0; color:#8a5027; font-size:13px; font-weight:700; }
     .result-body { padding:16px 0 0; }
@@ -67,38 +94,73 @@
     .result-section h3 { margin:0 0 7px; font-size:13px; letter-spacing:.04em; }
     .result-section p { margin:0; color:#514b46; font-size:14px; line-height:1.75; }
     .quote { padding:11px 13px; border-left:3px solid #8a5027; background:#f3e4d8; color:#514338 !important; }
-    .reflection { margin-top:auto; padding:13px 14px; border:1.5px solid var(--ink); border-radius:14px; background:var(--green); font-size:14px; font-weight:600; line-height:1.65; }
+    .reflection { margin-top:28px; padding:15px 16px; border:1.5px solid var(--ink); border-radius:14px; background:var(--green); font-size:14px; font-weight:600; line-height:1.65; }
     .reflection span { display:block; margin-bottom:4px; color:#59683a; font-size:11px; font-weight:700; letter-spacing:.08em; }
     .source-note { margin:20px auto 0; max-width:900px; color:#716962; font-size:11px; line-height:1.7; text-align:center; }
+    .source-note span { display:block; }
     .source-note a { color:#754524; }
-    .site-footer { border-top:2px solid var(--ink); background:#efeded; }
-    .footer-inner { width:min(1280px,100%); margin:auto; padding:18px 32px; display:flex; justify-content:space-between; gap:16px; color:#625c57; font-size:13px; }
+    .site-footer { width:100%; margin-top:48px; border-top:2px solid var(--ink); border-radius:24px 24px 0 0; background:#f0eded; }
+    .footer-inner { width:100%; max-width:1280px; margin:auto; padding:48px 40px; display:flex; flex-direction:column; align-items:center; justify-content:space-between; gap:8px; color:#1b1c1c; }
+    .footer-brand { display:flex; align-items:center; gap:8px; color:#1b1c1c; font-size:18px; line-height:1.3; font-weight:600; white-space:nowrap; -webkit-font-smoothing:antialiased; }
+    .footer-brand-icon { width:24px; height:24px; display:grid; place-items:center; flex:0 0 24px; border:2px solid var(--ink); border-radius:50%; background:#dbe8b4; }
+    .footer-brand-icon .material-symbols-outlined { font-size:14px; line-height:1; }
+    .footer-contact { display:flex; align-items:center; gap:16px; }
+    .contact-item { position:relative; }
+    .contact-button { padding:8px 24px; border:2px solid var(--ink); border-radius:999px; color:var(--ink); font-family:inherit; font-size:14px; line-height:1; letter-spacing:.05em; font-weight:700; cursor:pointer; transition:transform .2s,box-shadow .2s; -webkit-font-smoothing:antialiased; }
+    .contact-button:hover { transform:translate(2px,2px); box-shadow:2px 2px 0 var(--ink); }
+    .contact-button.wechat { background:var(--orange); color:#66330c; }
+    .contact-button.email { background:var(--green); color:#5b673d; }
+    .contact-button.phone { background:#b9a9a6; color:#4a3e3b; }
+    .contact-tooltip { position:absolute; left:50%; bottom:calc(100% + 12px); z-index:5; padding:8px 14px; transform:translate(-50%,6px) scale(.96); opacity:0; visibility:hidden; border:2px solid var(--ink); border-radius:10px; background:var(--paper); box-shadow:4px 4px 0 var(--ink); color:var(--ink); font-size:14px; font-weight:700; white-space:nowrap; transition:all .2s ease; }
+    .contact-item:hover .contact-tooltip,.contact-item:focus-within .contact-tooltip { transform:translate(-50%,0) scale(1); opacity:1; visibility:visible; }
+    .footer-slogan { color:#52443b; font-size:16px; line-height:1.6; font-weight:400; white-space:nowrap; -webkit-font-smoothing:antialiased; }
+    .copy-toast { position:fixed; left:50%; bottom:120px; z-index:60; padding:12px 24px; transform:translateX(-50%); border:2px solid var(--ink); border-radius:10px; background:#fff; box-shadow:4px 4px 0 var(--ink); opacity:0; pointer-events:none; transition:opacity .25s; }
+    .copy-toast.is-visible { opacity:1; }
+    @media (min-width:768px) { .nav-links { display:flex; } .footer-inner { flex-direction:row; padding-top:16px; padding-bottom:16px; } body { padding-bottom:104px; } .site-footer { position:fixed; left:0; right:0; bottom:0; z-index:40; margin-top:0; border-left:0; border-right:0; } }
     @keyframes leaf-fall { 0% { opacity:0; transform:translateY(-130px) translateX(var(--scatter,0px)) rotate(var(--spin,90deg)) scale(.82); } 62% { opacity:1; transform:translateY(9px) translateX(7px) rotate(-18deg) scale(1.04); } 80% { transform:translateY(-5px) translateX(-3px) rotate(8deg) scale(.99); } 100% { opacity:1; transform:translateY(0) translateX(0) rotate(0) scale(1); } }
-    @media (max-width:900px) { .site-nav { padding:12px 18px; gap:12px; } .brand { font-size:18px; } .nav-links { gap:14px; } .nav-links a { font-size:12px; } .resume-link { padding:9px 12px; font-size:12px; } .feature-grid { grid-template-columns:1fr; } .result-panel { min-height:390px; } }
-    @media (max-width:680px) { .site-nav { flex-wrap:wrap; } .nav-links { order:3; width:100%; justify-content:space-between; overflow:auto; padding:4px 0; } main { padding:28px 16px 42px; } .intro-copy { font-size:14px; } .ritual-panel,.result-panel { padding:18px 16px; } .leaf-row { grid-template-columns:42px 1fr 56px; gap:4px; padding:4px 10px; } .line-glyph { width:44px; } .roll-hint { max-width:150px; } .footer-inner { padding:15px 18px; flex-direction:column; } }
+    @media (max-width:900px) { .feature-grid { grid-template-columns:1fr; } .result-panel { min-height:390px; } }
+    @media (max-width:680px) { .site-nav { flex-wrap:nowrap; padding:16px 18px; } .nav-links { display:none; } .resume-link { padding:8px 14px; font-size:12px; } main { padding:28px 16px 42px; } .intro-copy { font-size:14px; } .intro-demo { grid-template-columns:1fr; gap:16px; margin-top:22px; } .demo-panel { min-height:0; padding:20px 18px; } .ritual-panel,.result-panel { padding:18px 16px; } .leaf-row { grid-template-columns:42px 1fr 56px; gap:4px; padding:4px 10px; } .line-glyph { width:44px; } .roll-hint { max-width:150px; } .footer-inner { padding:48px 40px; flex-direction:column; } .footer-contact { gap:16px; } .contact-button { padding:8px 24px; font-size:14px; } .footer-slogan { font-size:16px; } .copy-toast { bottom:100px; } }
     @media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; } }
   </style>
 </head>
 <body>
   <header class="site-header">
     <nav class="site-nav" aria-label="主导航">
-      <div class="brand"><span class="brand-icon" aria-hidden="true">✦</span>Brynn's Space</div>
+      <div class="brand"><span class="brand-icon" aria-hidden="true"><span class="material-symbols-outlined">person</span></span>Brynn's Space</div>
       <div class="nav-links">
-        <a href="#works">我的作品</a><a href="#about">关于我</a><a href="#contact">游戏经历</a><a href="#trigram" aria-current="page">落叶成卦</a>
+        <a href="#works">我的作品</a><a href="#about">关于我</a><a href="#contact">游戏经历</a><a href="#trigram" aria-current="page" aria-label="试一试" title="试一试">🍃</a>
       </div>
-      <a class="resume-link" href="../resume/resume.pdf" target="_blank" rel="noopener">下载简历</a>
+      <a class="resume-link" href="../resume/许子怡_硕士_电子科技大学_新闻与传播.pdf" target="_blank" rel="noopener">下载简历</a>
     </nav>
   </header>
 
   <main>
-    <section class="intro">
+    <div class="screen-stage" id="screen-stage">
+    <section class="intro intro-screen" id="intro-screen">
       <p class="eyebrow">A SMALL MOMENT OF REFLECTION</p>
       <h1>落叶成卦</h1>
-      <p class="intro-copy">让三片叶子落定，看看它们组成哪一种卦象。这里借古人的象意做一次轻松的自我提问，不替你预测答案。</p>
-      <span class="experience-note">三爻经卦 · 随机互动 · 非传统起卦</span>
+      <p class="intro-copy">先想一个此刻在意的问题，再让三片叶子落定。我们会从《周易》和《渊海子平》的古籍文字出发，看看卦象带来的提示。</p>
+      <div class="intro-demo">
+        <article class="demo-panel" style="background:#f1f4e7">
+          <h2>卦象示例</h2>
+          <p class="demo-copy">示例先以三阳爻组成乾卦；<br>实际体验中，每片叶子都有阳、阴两面。</p>
+          <div class="demo-leaves" aria-label="乾卦示例：三条阳爻">
+            <div class="demo-leaf-row"><span>上爻</span><div style="display:flex;align-items:center;gap:16px"><img class="demo-leaf" src="../leaf-assets/single-leaf-outline.svg" alt=""><span class="demo-yang" aria-label="阳爻"></span></div></div>
+            <div class="demo-leaf-row"><span>中爻</span><div style="display:flex;align-items:center;gap:16px"><img class="demo-leaf" src="../leaf-assets/single-leaf-outline.svg" alt=""><span class="demo-yang" aria-label="阳爻"></span></div></div>
+            <div class="demo-leaf-row"><span>初爻</span><div style="display:flex;align-items:center;gap:16px"><img class="demo-leaf" src="../leaf-assets/single-leaf-outline.svg" alt=""><span class="demo-yang" aria-label="阳爻"></span></div></div>
+          </div>
+        </article>
+        <article class="demo-panel" style="background:#fff8f2">
+          <h2>操作方法</h2>
+          <div class="demo-step"><span class="step-number">1</span><div><strong>先想一个问题</strong><p>选一件近期想理清的事，不必告诉任何人。</p></div></div>
+          <div class="demo-step"><span class="step-number">2</span><div><strong>摇一摇，让叶子落定</strong><p>三片叶子翻出阴阳面，按初爻到上爻组成一卦。</p></div></div>
+          <div class="demo-step"><span class="step-number">3</span><div><strong>先看古籍，再看日常解读</strong><p>从《周易》《渊海子平》的原文和象意，回到自己的问题。</p></div></div>
+          <button class="start-button" id="start-experience" type="button">试一试</button>
+        </article>
+      </div>
     </section>
 
-    <section class="feature-grid" aria-label="落叶成卦互动">
+    <section class="feature-grid activity-screen" id="activity-screen" aria-label="落叶成卦互动" hidden>
       <article class="panel ritual-panel">
         <div class="panel-heading">
           <div><h2>让叶子落下来</h2><p class="panel-kicker">三片叶子，各有阴阳两面</p></div>
@@ -107,21 +169,22 @@
         <div class="leaf-stack" id="leaf-stack" aria-live="polite">
           <div class="leaf-row" data-position="top" style="--scatter:74px;--spin:112deg">
             <span class="line-name">上爻</span>
-            <div class="leaf-drop"><div class="leaf-token"><div class="leaf-face front"><img class="leaf-asset" src="../leaf-assets/single-leaf-outline.svg" alt=""><svg class="leaf-veins" viewBox="0 0 1016 1618" aria-hidden="true"><path d="M520 1510 C495 1240 540 970 600 710 C650 495 680 330 760 150 M536 1320 C430 1230 330 1160 220 1110 M550 1160 C660 1080 760 1000 845 920 M570 950 C450 860 365 790 285 710 M610 790 C715 720 785 650 855 570 M650 610 C570 550 500 480 440 410"/></svg><span class="face-word">阳面</span></div><div class="leaf-face back"><img class="leaf-asset" src="../leaf-assets/single-leaf-outline.svg" alt=""><svg class="leaf-veins" viewBox="0 0 1016 1618" aria-hidden="true"><path d="M520 1510 C495 1240 540 970 600 710 C650 495 680 330 760 150 M536 1320 C430 1230 330 1160 220 1110 M550 1160 C660 1080 760 1000 845 920 M570 950 C450 860 365 790 285 710 M610 790 C715 720 785 650 855 570 M650 610 C570 550 500 480 440 410"/></svg><span class="face-word">阴面</span></div></div></div>
+            <div class="leaf-drop"><div class="leaf-token"><div class="leaf-face front"><img class="leaf-asset" src="../leaf-assets/single-leaf-outline.svg" alt=""><svg class="leaf-veins" viewBox="0 0 1016 1618" aria-hidden="true"><path d="M520 1510 C495 1240 540 970 600 710 C650 495 680 330 760 150 M536 1320 C430 1230 330 1160 220 1110 M550 1160 C660 1080 760 1000 845 920 M570 950 C450 860 365 790 285 710 M610 790 C715 720 785 650 855 570 M650 610 C570 550 500 480 440 410"/></svg><span class="face-word">阳爻</span></div><div class="leaf-face back"><img class="leaf-asset" src="../leaf-assets/single-leaf-outline.svg" alt=""><svg class="leaf-veins" viewBox="0 0 1016 1618" aria-hidden="true"><path d="M520 1510 C495 1240 540 970 600 710 C650 495 680 330 760 150 M536 1320 C430 1230 330 1160 220 1110 M550 1160 C660 1080 760 1000 845 920 M570 950 C450 860 365 790 285 710 M610 790 C715 720 785 650 855 570 M650 610 C570 550 500 480 440 410"/></svg><span class="face-word">阴爻</span></div></div></div>
             <span class="line-glyph" aria-hidden="true"></span>
           </div>
           <div class="leaf-row" data-position="middle" style="--scatter:-70px;--spin:-105deg">
             <span class="line-name">中爻</span>
-            <div class="leaf-drop"><div class="leaf-token"><div class="leaf-face front"><img class="leaf-asset" src="../leaf-assets/single-leaf-outline.svg" alt=""><svg class="leaf-veins" viewBox="0 0 1016 1618" aria-hidden="true"><path d="M520 1510 C495 1240 540 970 600 710 C650 495 680 330 760 150 M536 1320 C430 1230 330 1160 220 1110 M550 1160 C660 1080 760 1000 845 920 M570 950 C450 860 365 790 285 710 M610 790 C715 720 785 650 855 570 M650 610 C570 550 500 480 440 410"/></svg><span class="face-word">阳面</span></div><div class="leaf-face back"><img class="leaf-asset" src="../leaf-assets/single-leaf-outline.svg" alt=""><svg class="leaf-veins" viewBox="0 0 1016 1618" aria-hidden="true"><path d="M520 1510 C495 1240 540 970 600 710 C650 495 680 330 760 150 M536 1320 C430 1230 330 1160 220 1110 M550 1160 C660 1080 760 1000 845 920 M570 950 C450 860 365 790 285 710 M610 790 C715 720 785 650 855 570 M650 610 C570 550 500 480 440 410"/></svg><span class="face-word">阴面</span></div></div></div>
+            <div class="leaf-drop"><div class="leaf-token"><div class="leaf-face front"><img class="leaf-asset" src="../leaf-assets/single-leaf-outline.svg" alt=""><svg class="leaf-veins" viewBox="0 0 1016 1618" aria-hidden="true"><path d="M520 1510 C495 1240 540 970 600 710 C650 495 680 330 760 150 M536 1320 C430 1230 330 1160 220 1110 M550 1160 C660 1080 760 1000 845 920 M570 950 C450 860 365 790 285 710 M610 790 C715 720 785 650 855 570 M650 610 C570 550 500 480 440 410"/></svg><span class="face-word">阳爻</span></div><div class="leaf-face back"><img class="leaf-asset" src="../leaf-assets/single-leaf-outline.svg" alt=""><svg class="leaf-veins" viewBox="0 0 1016 1618" aria-hidden="true"><path d="M520 1510 C495 1240 540 970 600 710 C650 495 680 330 760 150 M536 1320 C430 1230 330 1160 220 1110 M550 1160 C660 1080 760 1000 845 920 M570 950 C450 860 365 790 285 710 M610 790 C715 720 785 650 855 570 M650 610 C570 550 500 480 440 410"/></svg><span class="face-word">阴爻</span></div></div></div>
             <span class="line-glyph" aria-hidden="true"></span>
           </div>
           <div class="leaf-row" data-position="bottom" style="--scatter:42px;--spin:93deg">
             <span class="line-name">初爻</span>
-            <div class="leaf-drop"><div class="leaf-token"><div class="leaf-face front"><img class="leaf-asset" src="../leaf-assets/single-leaf-outline.svg" alt=""><svg class="leaf-veins" viewBox="0 0 1016 1618" aria-hidden="true"><path d="M520 1510 C495 1240 540 970 600 710 C650 495 680 330 760 150 M536 1320 C430 1230 330 1160 220 1110 M550 1160 C660 1080 760 1000 845 920 M570 950 C450 860 365 790 285 710 M610 790 C715 720 785 650 855 570 M650 610 C570 550 500 480 440 410"/></svg><span class="face-word">阳面</span></div><div class="leaf-face back"><img class="leaf-asset" src="../leaf-assets/single-leaf-outline.svg" alt=""><svg class="leaf-veins" viewBox="0 0 1016 1618" aria-hidden="true"><path d="M520 1510 C495 1240 540 970 600 710 C650 495 680 330 760 150 M536 1320 C430 1230 330 1160 220 1110 M550 1160 C660 1080 760 1000 845 920 M570 950 C450 860 365 790 285 710 M610 790 C715 720 785 650 855 570 M650 610 C570 550 500 480 440 410"/></svg><span class="face-word">阴面</span></div></div></div>
+            <div class="leaf-drop"><div class="leaf-token"><div class="leaf-face front"><img class="leaf-asset" src="../leaf-assets/single-leaf-outline.svg" alt=""><svg class="leaf-veins" viewBox="0 0 1016 1618" aria-hidden="true"><path d="M520 1510 C495 1240 540 970 600 710 C650 495 680 330 760 150 M536 1320 C430 1230 330 1160 220 1110 M550 1160 C660 1080 760 1000 845 920 M570 950 C450 860 365 790 285 710 M610 790 C715 720 785 650 855 570 M650 610 C570 550 500 480 440 410"/></svg><span class="face-word">阳爻</span></div><div class="leaf-face back"><img class="leaf-asset" src="../leaf-assets/single-leaf-outline.svg" alt=""><svg class="leaf-veins" viewBox="0 0 1016 1618" aria-hidden="true"><path d="M520 1510 C495 1240 540 970 600 710 C650 495 680 330 760 150 M536 1320 C430 1230 330 1160 220 1110 M550 1160 C660 1080 760 1000 845 920 M570 950 C450 860 365 790 285 710 M610 790 C715 720 785 650 855 570 M650 610 C570 550 500 480 440 410"/></svg><span class="face-word">阴爻</span></div></div></div>
             <span class="line-glyph" aria-hidden="true"></span>
           </div>
         </div>
         <div class="leaf-actions">
+          <button class="back-button" id="back-to-intro" type="button">返回说明</button>
           <button class="roll-button" id="roll-button" type="button">再摇一次</button>
           <span class="roll-hint">排在最下方的是初爻<br>卦象按初爻到上爻读取</span>
         </div>
@@ -131,17 +194,29 @@
         <div class="result-top"><div class="trigram-symbol" id="trigram-symbol" aria-label="卦象">☰</div><div><h2 class="result-name" id="result-name">乾 · Qián</h2><p class="result-nature" id="result-nature">天｜健｜开创</p></div></div>
         <div class="result-body">
           <section class="result-section"><h3>《周易·说卦传》</h3><p class="quote" id="zhouyi-quote"></p></section>
-          <section class="result-section"><h3>换成今天的话</h3><p id="plain-meaning"></p></section>
           <section class="result-section"><h3>《渊海子平》· 五行参读</h3><p class="quote" id="ziping-quote"></p><p id="ziping-meaning" style="margin-top:7px"></p></section>
+          <section class="result-section"><h3>日常解读</h3><p id="plain-meaning"></p></section>
         </div>
         <div class="reflection" id="reflection"><span>留给自己的一个问题</span>我现在最想持续推进的事情是什么？</div>
       </article>
     </section>
+    </div>
 
-    <p class="source-note">卦象是按初爻至上爻的三位阴阳随机组合，属于互动体验，并非蓍草或铜钱起卦。引文分别据<a href="https://zh.wikisource.org/zh-hant/周易/說卦" target="_blank" rel="noopener">《周易·说卦传》</a>与<a href="https://zh.wikisource.org/zh-hans/淵海子平" target="_blank" rel="noopener">《渊海子平·五行生克赋》</a>；五行文字作为古籍参读，不构成个人命理判断。叶片素材：Single Leaf SVG，freepngimg.com，CC0 1.0，已调整颜色并叠加自绘叶脉。</p>
+    <p class="source-note"><span>卦象按初爻至上爻的三位阴阳随机组合，仅为互动体验，并非蓍草或铜钱起卦。</span><span>引文出处：<a href="https://zh.wikisource.org/zh-hant/周易/說卦" target="_blank" rel="noopener">《周易·说卦传》</a>；<a href="https://zh.wikisource.org/zh-hans/淵海子平" target="_blank" rel="noopener">《渊海子平·五行生克赋》</a>。五行内容仅作古籍参读，不构成个人命理判断。</span><span>叶片素材：Single Leaf SVG，freepngimg.com，CC0 1.0。</span></p>
   </main>
 
-  <footer class="site-footer"><div class="footer-inner"><span>Brynn's Space</span><span>Be secure with yourself ;)</span></div></footer>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand"><span class="footer-brand-icon" aria-hidden="true"><span class="material-symbols-outlined">person</span></span>Brynn's Space</div>
+      <div class="footer-contact">
+        <div class="contact-item"><button class="contact-button wechat" type="button" onclick="handleContactClick(this,'微信','Nine6ixteen')">微信</button><span class="contact-tooltip">Nine6ixteen</span></div>
+        <div class="contact-item"><button class="contact-button email" type="button" onclick="handleContactClick(this,'邮箱','llxs666@163.com')">邮箱</button><span class="contact-tooltip">llxs666@163.com</span></div>
+        <div class="contact-item"><button class="contact-button phone" type="button" onclick="handleContactClick(this,'电话','15828602614')">电话</button><span class="contact-tooltip">15828602614</span></div>
+      </div>
+      <div class="footer-slogan">Be secure with yourself ;)</div>
+    </div>
+  </footer>
+  <div class="copy-toast" id="copy-toast" role="status" aria-live="polite">已经复制成功啦~</div>
 
   <script>
     const trigrams = {
@@ -156,6 +231,8 @@
     };
     const rows = [...document.querySelectorAll(".leaf-row")];
     const button = document.getElementById("roll-button");
+    const introScreen = document.getElementById("intro-screen");
+    const activityScreen = document.getElementById("activity-screen");
     let rollNumber = 0;
     const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
     function showResult(bits) {
@@ -168,6 +245,53 @@
       document.getElementById("ziping-quote").textContent = `“${result.ziping}”`;
       document.getElementById("ziping-meaning").textContent = result.zipingPlain;
       document.getElementById("reflection").innerHTML = `<span>留给自己的一个问题</span>${result.reflection}`;
+    }
+    function showResultWithResize(bits) {
+      const stage = document.getElementById("screen-stage");
+      const startHeight = stage.offsetHeight;
+      stage.style.height = `${startHeight}px`;
+      showResult(bits);
+      const endHeight = activityScreen.offsetHeight;
+      let finished = false;
+      const finish = () => {
+        if (finished) return;
+        finished = true;
+        stage.style.height = "auto";
+        stage.removeEventListener("transitionend", onTransitionEnd);
+      };
+      const onTransitionEnd = event => {
+        if (event.target === stage && event.propertyName === "height") finish();
+      };
+      stage.addEventListener("transitionend", onTransitionEnd);
+      requestAnimationFrame(() => { stage.style.height = `${endHeight}px`; });
+      setTimeout(finish, 700);
+    }
+    function transitionScreen(from,to) {
+      const stage = document.getElementById("screen-stage");
+      const startHeight = stage.offsetHeight;
+      const duration = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 560;
+      stage.style.height = `${startHeight}px`;
+      void stage.offsetHeight;
+      to.hidden = false;
+      to.classList.add("screen-pre-enter");
+      Object.assign(to.style,{position:"absolute",inset:"0 0 auto",width:"100%"});
+      const toStyle = getComputedStyle(to);
+      const endHeight = to.offsetHeight + parseFloat(toStyle.marginTop) + parseFloat(toStyle.marginBottom);
+      void to.offsetHeight;
+      return new Promise(resolve => requestAnimationFrame(() => {
+        from.classList.add("screen-leave");
+        to.classList.remove("screen-pre-enter");
+        to.classList.add("screen-enter");
+        stage.style.height = `${endHeight}px`;
+        setTimeout(() => {
+          from.hidden = true;
+          from.classList.remove("screen-leave");
+          to.classList.remove("screen-enter");
+          to.removeAttribute("style");
+          stage.style.height = "auto";
+          resolve();
+        },duration);
+      }));
     }
     async function tossLeaves() {
       button.disabled = true;
@@ -187,11 +311,28 @@
         row.setAttribute("aria-label",`${row.querySelector(".line-name").textContent}：${isYin ? "阴爻" : "阳爻"}`);
         await sleep(240);
       }
-      showResult(bits);
+      showResultWithResize(bits);
       button.disabled = false;
     }
     button.addEventListener("click",tossLeaves);
-    tossLeaves();
+    let toastTimeout;
+    async function handleContactClick(button,label,value) {
+      try {
+        await navigator.clipboard.writeText(value);
+        const original=button.textContent;
+        button.textContent="已复制";
+        setTimeout(()=>button.textContent=original,1200);
+        const toast=document.getElementById("copy-toast");
+        toast.classList.add("is-visible");
+        clearTimeout(toastTimeout);
+        toastTimeout=setTimeout(()=>toast.classList.remove("is-visible"),2200);
+      } catch (error) {
+        button.textContent=value;
+        setTimeout(()=>button.textContent=label,1800);
+      }
+    }
+    document.getElementById("start-experience").addEventListener("click",async()=>{await transitionScreen(introScreen,activityScreen);tossLeaves();});
+    document.getElementById("back-to-intro").addEventListener("click",async()=>{await transitionScreen(activityScreen,introScreen);window.scrollTo({top:0,behavior:"smooth"});});
     (function(){
       const routes={works:"_3/code.html",about:"_4/code.html",contact:"game/code.html",content:"_1/code.html",presentation:"_2/code.html",ai:"ai/code.html",trigram:"trigram/code.html"};
       document.addEventListener("click",event=>{const link=event.target.closest('a[href^="#"]');if(!link||window.parent===window)return;const route=link.getAttribute("href").slice(1);if(!routes[route])return;event.preventDefault();window.parent.postMessage({type:"stitch-route",route},"*");});
