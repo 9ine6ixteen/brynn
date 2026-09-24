@@ -1,0 +1,5 @@
+single-leaf-outline.svg
+Source: https://freepngimg.com/svg/68137-single-leaf
+License: CC0 1.0 Universal (the source page requests attribution; attribution is included here)
+Use in this site: recolored and combined with a custom vein overlay for the falling-leaf interaction.
+

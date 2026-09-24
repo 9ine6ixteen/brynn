@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>落叶成卦 · Brynn's Space</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink:#1b1c1c; --paper:#fcf9f8; --green:#d8e6b1; --orange:#e69c6d; --muted:#776f69; --line:#1b1c1c; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; display:flex; flex-direction:column; color:var(--ink); background:var(--paper); font-family:"Plus Jakarta Sans","Noto Sans SC",sans-serif; }
+    .site-header { position:sticky; top:0; z-index:10; background:var(--paper); border-bottom:2px solid var(--ink); }
+    .site-nav { width:min(1280px,100%); margin:auto; padding:14px 32px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+    .brand { display:flex; align-items:center; gap:10px; flex-shrink:0; font-size:22px; font-weight:700; }
+    .brand-icon { width:32px; height:32px; display:grid; place-items:center; background:var(--green); border:2px solid var(--ink); border-radius:50%; }
+    .nav-links { display:flex; gap:28px; align-items:center; }
+    .nav-links a { color:var(--ink); text-decoration:none; font-size:14px; font-weight:700; white-space:nowrap; }
+    .nav-links a:hover,.nav-links a[aria-current="page"] { color:#8a5027; }
+    .nav-links a[aria-current="page"] { border-bottom:2px solid #8a5027; padding-bottom:4px; }
+    .resume-link { color:#66330c; background:var(--orange); border:2px solid var(--ink); border-radius:999px; padding:10px 20px; font-size:14px; font-weight:700; text-decoration:none; white-space:nowrap; }
+    main { width:min(1120px,100%); margin:0 auto; padding:42px 30px 56px; flex:1; }
+    .intro { text-align:center; margin:0 auto 28px; max-width:740px; }
+    .eyebrow { margin:0 0 10px; color:#8a5027; font-size:12px; font-weight:700; letter-spacing:.16em; }
+    h1 { margin:0; font-size:clamp(32px,4vw,48px); line-height:1.15; }
+    .intro-copy { margin:12px 0 0; color:#625c57; font-size:16px; line-height:1.75; }
+    .experience-note { display:inline-flex; margin-top:14px; padding:7px 12px; border:1.5px solid var(--ink); border-radius:999px; background:#f1dfdb; color:#5b4944; font-size:12px; font-weight:600; }
+    .feature-grid { display:grid; grid-template-columns:minmax(0,1.02fr) minmax(320px,.98fr); gap:22px; align-items:stretch; }
+    .panel { border:2px solid var(--ink); border-radius:22px; box-shadow:6px 6px 0 var(--ink); overflow:hidden; }
+    .ritual-panel { background:#f1f4e7; padding:22px 24px 20px; }
+    .panel-heading { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
+    .panel-heading h2 { margin:0; font-size:20px; }
+    .panel-kicker { margin:5px 0 0; color:var(--muted); font-size:13px; }
+    .round-label { border:1.5px solid var(--ink); border-radius:999px; padding:6px 10px; background:white; font-size:12px; white-space:nowrap; }
+    .leaf-stack { display:grid; gap:7px; margin:20px 0 16px; }
+    .leaf-row { min-height:92px; display:grid; grid-template-columns:48px 1fr 74px; align-items:center; gap:12px; border:1.5px solid rgba(27,28,28,.24); border-radius:16px; padding:4px 16px; background:rgba(255,255,255,.68); }
+    .line-name { color:#6b625c; font-size:12px; font-weight:600; }
+    .leaf-drop { width:70px; height:82px; display:grid; place-items:center; justify-self:center; opacity:0; transform:translateY(-130px) translateX(var(--scatter,0px)) rotate(var(--spin,90deg)); }
+    .leaf-row.is-falling .leaf-drop { animation:leaf-fall .82s cubic-bezier(.21,.7,.31,1) forwards; }
+    .leaf-token { width:52px; height:76px; position:relative; transform-style:preserve-3d; transition:transform .72s cubic-bezier(.2,.75,.2,1); }
+    .leaf-token.is-yin { transform:rotateY(180deg); }
+    .leaf-face { position:absolute; inset:0; display:grid; place-items:center; backface-visibility:hidden; }
+    .leaf-face.back { transform:rotateY(180deg); }
+    .leaf-asset,.leaf-veins { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; }
+    .leaf-face.front .leaf-asset { filter:brightness(0) saturate(100%) invert(51%) sepia(29%) saturate(552%) hue-rotate(43deg) brightness(93%); }
+    .leaf-face.back .leaf-asset { filter:brightness(0) saturate(100%) invert(60%) sepia(41%) saturate(615%) hue-rotate(331deg) brightness(97%); }
+    .leaf-veins { overflow:visible; }
+    .leaf-veins path { fill:none; stroke:rgba(255,255,255,.8); stroke-width:18; stroke-linecap:round; }
+    .leaf-face.back .leaf-veins path { stroke:rgba(96,55,36,.4); stroke-width:16; }
+    .face-word { position:relative; z-index:2; padding:4px 7px; border:1px solid rgba(27,28,28,.42); border-radius:999px; background:rgba(252,249,248,.84); font-size:11px; font-weight:700; }
+    .line-glyph { width:54px; height:8px; display:block; justify-self:end; border-radius:3px; background:var(--ink); }
+    .line-glyph.yin { background:linear-gradient(to right,var(--ink) 0 40%,transparent 40% 60%,var(--ink) 60% 100%); }
+    .leaf-actions { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+    .roll-button { appearance:none; border:2px solid var(--ink); border-radius:999px; background:var(--orange); color:#66330c; padding:11px 20px; font-family:inherit; font-size:14px; font-weight:700; cursor:pointer; box-shadow:3px 3px 0 var(--ink); transition:transform .15s,box-shadow .15s; }
+    .roll-button:hover { transform:translate(-2px,-2px); box-shadow:5px 5px 0 var(--ink); }
+    .roll-button:active { transform:translate(1px,1px); box-shadow:1px 1px 0 var(--ink); }
+    .roll-button:disabled { opacity:.65; cursor:wait; }
+    .roll-hint { color:#6b625c; font-size:12px; line-height:1.5; text-align:right; }
+    .result-panel { min-height:100%; background:#fff8f2; padding:24px 26px; display:flex; flex-direction:column; }
+    .result-top { display:flex; align-items:center; gap:16px; padding-bottom:18px; border-bottom:1.5px solid rgba(27,28,28,.2); }
+    .trigram-symbol { flex:0 0 64px; width:64px; height:76px; display:grid; place-items:center; border:2px solid var(--ink); border-radius:14px; background:var(--green); font-family:serif; font-size:52px; line-height:1; }
+    .result-name { margin:0; font-size:27px; line-height:1.2; }
+    .result-nature { margin:6px 0 0; color:#8a5027; font-size:13px; font-weight:700; }
+    .result-body { padding:16px 0 0; }
+    .result-section + .result-section { margin-top:16px; }
+    .result-section h3 { margin:0 0 7px; font-size:13px; letter-spacing:.04em; }
+    .result-section p { margin:0; color:#514b46; font-size:14px; line-height:1.75; }
+    .quote { padding:11px 13px; border-left:3px solid #8a5027; background:#f3e4d8; color:#514338 !important; }
+    .reflection { margin-top:auto; padding:13px 14px; border:1.5px solid var(--ink); border-radius:14px; background:var(--green); font-size:14px; font-weight:600; line-height:1.65; }
+    .reflection span { display:block; margin-bottom:4px; color:#59683a; font-size:11px; font-weight:700; letter-spacing:.08em; }
+    .source-note { margin:20px auto 0; max-width:900px; color:#716962; font-size:11px; line-height:1.7; text-align:center; }
+    .source-note a { color:#754524; }
+    .site-footer { border-top:2px solid var(--ink); background:#efeded; }
+    .footer-inner { width:min(1280px,100%); margin:auto; padding:18px 32px; display:flex; justify-content:space-between; gap:16px; color:#625c57; font-size:13px; }
+    @keyframes leaf-fall { 0% { opacity:0; transform:translateY(-130px) translateX(var(--scatter,0px)) rotate(var(--spin,90deg)) scale(.82); } 62% { opacity:1; transform:translateY(9px) translateX(7px) rotate(-18deg) scale(1.04); } 80% { transform:translateY(-5px) translateX(-3px) rotate(8deg) scale(.99); } 100% { opacity:1; transform:translateY(0) translateX(0) rotate(0) scale(1); } }
+    @media (max-width:900px) { .site-nav { padding:12px 18px; gap:12px; } .brand { font-size:18px; } .nav-links { gap:14px; } .nav-links a { font-size:12px; } .resume-link { padding:9px 12px; font-size:12px; } .feature-grid { grid-template-columns:1fr; } .result-panel { min-height:390px; } }
+    @media (max-width:680px) { .site-nav { flex-wrap:wrap; } .nav-links { order:3; width:100%; justify-content:space-between; overflow:auto; padding:4px 0; } main { padding:28px 16px 42px; } .intro-copy { font-size:14px; } .ritual-panel,.result-panel { padding:18px 16px; } .leaf-row { grid-template-columns:42px 1fr 56px; gap:4px; padding:4px 10px; } .line-glyph { width:44px; } .roll-hint { max-width:150px; } .footer-inner { padding:15px 18px; flex-direction:column; } }
+    @media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; } }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="site-nav" aria-label="主导航">
+      <div class="brand"><span class="brand-icon" aria-hidden="true">✦</span>Brynn's Space</div>
+      <div class="nav-links">
+        <a href="#works">我的作品</a><a href="#about">关于我</a><a href="#contact">游戏经历</a><a href="#trigram" aria-current="page">落叶成卦</a>
+      </div>
+      <a class="resume-link" href="../resume/resume.pdf" target="_blank" rel="noopener">下载简历</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p class="eyebrow">A SMALL MOMENT OF REFLECTION</p>
+      <h1>落叶成卦</h1>
+      <p class="intro-copy">让三片叶子落定，看看它们组成哪一种卦象。这里借古人的象意做一次轻松的自我提问，不替你预测答案。</p>
+      <span class="experience-note">三爻经卦 · 随机互动 · 非传统起卦</span>
+    </section>
+
+    <section class="feature-grid" aria-label="落叶成卦互动">
+      <article class="panel ritual-panel">
+        <div class="panel-heading">
+          <div><h2>让叶子落下来</h2><p class="panel-kicker">三片叶子，各有阴阳两面</p></div>
+          <span class="round-label" id="roll-count">第 1 次</span>
+        </div>
+        <div class="leaf-stack" id="leaf-stack" aria-live="polite">
+          <div class="leaf-row" data-position="top" style="--scatter:74px;--spin:112deg">
+            <span class="line-name">上爻</span>
+            <div class="leaf-drop"><div class="leaf-token"><div class="leaf-face front"><img class="leaf-asset" src="../leaf-assets/single-leaf-outline.svg" alt=""><svg class="leaf-veins" viewBox="0 0 1016 1618" aria-hidden="true"><path d="M520 1510 C495 1240 540 970 600 710 C650 495 680 330 760 150 M536 1320 C430 1230 330 1160 220 1110 M550 1160 C660 1080 760 1000 845 920 M570 950 C450 860 365 790 285 710 M610 790 C715 720 785 650 855 570 M650 610 C570 550 500 480 440 410"/></svg><span class="face-word">阳面</span></div><div class="leaf-face back"><img class="leaf-asset" src="../leaf-assets/single-leaf-outline.svg" alt=""><svg class="leaf-veins" viewBox="0 0 1016 1618" aria-hidden="true"><path d="M520 1510 C495 1240 540 970 600 710 C650 495 680 330 760 150 M536 1320 C430 1230 330 1160 220 1110 M550 1160 C660 1080 760 1000 845 920 M570 950 C450 860 365 790 285 710 M610 790 C715 720 785 650 855 570 M650 610 C570 550 500 480 440 410"/></svg><span class="face-word">阴面</span></div></div></div>
+            <span class="line-glyph" aria-hidden="true"></span>
+          </div>
+          <div class="leaf-row" data-position="middle" style="--scatter:-70px;--spin:-105deg">
+            <span class="line-name">中爻</span>
+            <div class="leaf-drop"><div class="leaf-token"><div class="leaf-face front"><img class="leaf-asset" src="../leaf-assets/single-leaf-outline.svg" alt=""><svg class="leaf-veins" viewBox="0 0 1016 1618" aria-hidden="true"><path d="M520 1510 C495 1240 540 970 600 710 C650 495 680 330 760 150 M536 1320 C430 1230 330 1160 220 1110 M550 1160 C660 1080 760 1000 845 920 M570 950 C450 860 365 790 285 710 M610 790 C715 720 785 650 855 570 M650 610 C570 550 500 480 440 410"/></svg><span class="face-word">阳面</span></div><div class="leaf-face back"><img class="leaf-asset" src="../leaf-assets/single-leaf-outline.svg" alt=""><svg class="leaf-veins" viewBox="0 0 1016 1618" aria-hidden="true"><path d="M520 1510 C495 1240 540 970 600 710 C650 495 680 330 760 150 M536 1320 C430 1230 330 1160 220 1110 M550 1160 C660 1080 760 1000 845 920 M570 950 C450 860 365 790 285 710 M610 790 C715 720 785 650 855 570 M650 610 C570 550 500 480 440 410"/></svg><span class="face-word">阴面</span></div></div></div>
+            <span class="line-glyph" aria-hidden="true"></span>
+          </div>
+          <div class="leaf-row" data-position="bottom" style="--scatter:42px;--spin:93deg">
+            <span class="line-name">初爻</span>
+            <div class="leaf-drop"><div class="leaf-token"><div class="leaf-face front"><img class="leaf-asset" src="../leaf-assets/single-leaf-outline.svg" alt=""><svg class="leaf-veins" viewBox="0 0 1016 1618" aria-hidden="true"><path d="M520 1510 C495 1240 540 970 600 710 C650 495 680 330 760 150 M536 1320 C430 1230 330 1160 220 1110 M550 1160 C660 1080 760 1000 845 920 M570 950 C450 860 365 790 285 710 M610 790 C715 720 785 650 855 570 M650 610 C570 550 500 480 440 410"/></svg><span class="face-word">阳面</span></div><div class="leaf-face back"><img class="leaf-asset" src="../leaf-assets/single-leaf-outline.svg" alt=""><svg class="leaf-veins" viewBox="0 0 1016 1618" aria-hidden="true"><path d="M520 1510 C495 1240 540 970 600 710 C650 495 680 330 760 150 M536 1320 C430 1230 330 1160 220 1110 M550 1160 C660 1080 760 1000 845 920 M570 950 C450 860 365 790 285 710 M610 790 C715 720 785 650 855 570 M650 610 C570 550 500 480 440 410"/></svg><span class="face-word">阴面</span></div></div></div>
+            <span class="line-glyph" aria-hidden="true"></span>
+          </div>
+        </div>
+        <div class="leaf-actions">
+          <button class="roll-button" id="roll-button" type="button">再摇一次</button>
+          <span class="roll-hint">排在最下方的是初爻<br>卦象按初爻到上爻读取</span>
+        </div>
+      </article>
+
+      <article class="panel result-panel" aria-live="polite" aria-atomic="true">
+        <div class="result-top"><div class="trigram-symbol" id="trigram-symbol" aria-label="卦象">☰</div><div><h2 class="result-name" id="result-name">乾 · Qián</h2><p class="result-nature" id="result-nature">天｜健｜开创</p></div></div>
+        <div class="result-body">
+          <section class="result-section"><h3>《周易·说卦传》</h3><p class="quote" id="zhouyi-quote"></p></section>
+          <section class="result-section"><h3>换成今天的话</h3><p id="plain-meaning"></p></section>
+          <section class="result-section"><h3>《渊海子平》· 五行参读</h3><p class="quote" id="ziping-quote"></p><p id="ziping-meaning" style="margin-top:7px"></p></section>
+        </div>
+        <div class="reflection" id="reflection"><span>留给自己的一个问题</span>我现在最想持续推进的事情是什么？</div>
+      </article>
+    </section>
+
+    <p class="source-note">卦象是按初爻至上爻的三位阴阳随机组合，属于互动体验，并非蓍草或铜钱起卦。引文分别据<a href="https://zh.wikisource.org/zh-hant/周易/說卦" target="_blank" rel="noopener">《周易·说卦传》</a>与<a href="https://zh.wikisource.org/zh-hans/淵海子平" target="_blank" rel="noopener">《渊海子平·五行生克赋》</a>；五行文字作为古籍参读，不构成个人命理判断。叶片素材：Single Leaf SVG，freepngimg.com，CC0 1.0，已调整颜色并叠加自绘叶脉。</p>
+  </main>
+
+  <footer class="site-footer"><div class="footer-inner"><span>Brynn's Space</span><span>Be secure with yourself ;)</span></div></footer>
+
+  <script>
+    const trigrams = {
+      "111": {name:"乾",pinyin:"Qián",symbol:"☰",nature:"天｜健｜开创",quote:"乾，健也。",plain:"像天体运行那样持续向前。可以借它想一想：眼下哪件事值得明确方向、一步步推进？",ziping:"譬若顽金，最喜红炉煆炼。",zipingPlain:"《渊海子平》谈金时也写到锻炼与成器：坚定不等于一成不变，适度打磨能让能力更好地发挥。",reflection:"我现在最想持续推进的事情是什么？"},
+      "110": {name:"兑",pinyin:"Duì",symbol:"☱",nature:"泽｜悦｜交流",quote:"兑，说也。",plain:"泽使人感到舒展，也象征交流与喜悦。可以留意：怎样表达，才能让沟通带来连接？",ziping:"寸金尺铁，气用刚柔。",zipingPlain:"从金的刚柔变化看，表达也不必只有一种力度；清楚坚定，也可以留有余地。",reflection:"我想把哪句话说得更真诚、也更容易被听见？"},
+      "101": {name:"离",pinyin:"Lí",symbol:"☲",nature:"火｜明｜照见",quote:"离，丽也。",plain:"离有附着、明亮之意。可以先看清事情依凭什么、关系如何，再决定怎样表达判断。",ziping:"火无木，则终其光。",zipingPlain:"五行的生助关系提醒我们，光亮也需要支撑。想让一个想法持续发光，可以先找到它需要的资源。",reflection:"是什么在支持我看清这件事？"},
+      "100": {name:"震",pinyin:"Zhèn",symbol:"☳",nature:"雷｜动｜启动",quote:"震，动也。",plain:"雷声惊动万物，也像一次开始。可以不用等到完全准备好，先做一个小动作。",ziping:"木气盛而仁昌。",zipingPlain:"木的意象常让人想到生长；把注意力放在能持续滋养的行动上，而非一时冲刺。",reflection:"今天我可以开始的最小一步是什么？"},
+      "011": {name:"巽",pinyin:"Xùn",symbol:"☴",nature:"风｜入｜渐进",quote:"巽，入也。",plain:"风无形，却能进入细微之处。改变有时不靠强推，而靠持续、温和地抵达。",ziping:"活木忌埋根之铁。",zipingPlain:"木需要生长的空间。遇到阻滞时，可以先辨认是什么限制了生长，再调整方法。",reflection:"哪一种温和而持续的做法，可能比硬推更有效？"},
+      "010": {name:"坎",pinyin:"Kǎn",symbol:"☵",nature:"水｜险｜穿越",quote:"坎，陷也。",plain:"坎提示我们看见地形中的低处和险处。不是要硬闯，而是先确认脚下，再寻找可行路径。",ziping:"壬癸能达五湖，盖有并流之性。",zipingPlain:"水能顺势汇流。面对复杂局面时，看看哪些资源或伙伴可以汇到同一个方向。",reflection:"眼前这段路里，最稳妥的下一步是什么？"},
+      "001": {name:"艮",pinyin:"Gèn",symbol:"☶",nature:"山｜止｜停顿",quote:"艮，止也。",plain:"山有边界，也让人知道何时停下。暂停并不等于放弃，有时是为了重新看清轻重缓急。",ziping:"陇头之土，少木难疏。",zipingPlain:"土的状态会影响生长。换成日常提醒：环境与条件值得整理，停下来也可以是在疏通。",reflection:"现在有什么事值得暂时停一停、重新判断？"},
+      "000": {name:"坤",pinyin:"Kūn",symbol:"☷",nature:"地｜顺｜承载",quote:"坤，顺也。",plain:"大地承载万物。可以把它理解为接纳现实、梳理条件，再稳稳安排下一步。",ziping:"土虚，反被水相欺。",zipingPlain:"五行文字谈到承载力与边界；落到日常，可以先照顾自己的余力，再决定还要承担多少。",reflection:"我需要先接住什么，又该给自己留多少余地？"}
+    };
+    const rows = [...document.querySelectorAll(".leaf-row")];
+    const button = document.getElementById("roll-button");
+    let rollNumber = 0;
+    const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+    function showResult(bits) {
+      const result = trigrams[bits.join("")];
+      document.getElementById("trigram-symbol").textContent = result.symbol;
+      document.getElementById("result-name").textContent = `${result.name} · ${result.pinyin}`;
+      document.getElementById("result-nature").textContent = result.nature;
+      document.getElementById("zhouyi-quote").textContent = `“${result.quote}”`;
+      document.getElementById("plain-meaning").textContent = result.plain;
+      document.getElementById("ziping-quote").textContent = `“${result.ziping}”`;
+      document.getElementById("ziping-meaning").textContent = result.zipingPlain;
+      document.getElementById("reflection").innerHTML = `<span>留给自己的一个问题</span>${result.reflection}`;
+    }
+    async function tossLeaves() {
+      button.disabled = true;
+      rollNumber += 1;
+      document.getElementById("roll-count").textContent = `第 ${rollNumber} 次`;
+      rows.forEach(row => { row.classList.remove("is-falling"); row.querySelector(".leaf-token").classList.remove("is-yin"); row.querySelector(".line-glyph").classList.remove("yin"); });
+      void document.getElementById("leaf-stack").offsetWidth;
+      const bits = [0,0,0].map(() => Math.random() < .5 ? "0" : "1");
+      rows.forEach((row,index) => setTimeout(() => row.classList.add("is-falling"), 70 + index * 150));
+      await sleep(1120);
+      const revealOrder = [2,1,0];
+      for (const lineIndex of revealOrder) {
+        const row = rows[2-lineIndex];
+        const isYin = bits[lineIndex] === "0";
+        row.querySelector(".leaf-token").classList.toggle("is-yin",isYin);
+        row.querySelector(".line-glyph").classList.toggle("yin",isYin);
+        row.setAttribute("aria-label",`${row.querySelector(".line-name").textContent}：${isYin ? "阴爻" : "阳爻"}`);
+        await sleep(240);
+      }
+      showResult(bits);
+      button.disabled = false;
+    }
+    button.addEventListener("click",tossLeaves);
+    tossLeaves();
+    (function(){
+      const routes={works:"_3/code.html",about:"_4/code.html",contact:"game/code.html",content:"_1/code.html",presentation:"_2/code.html",ai:"ai/code.html",trigram:"trigram/code.html"};
+      document.addEventListener("click",event=>{const link=event.target.closest('a[href^="#"]');if(!link||window.parent===window)return;const route=link.getAttribute("href").slice(1);if(!routes[route])return;event.preventDefault();window.parent.postMessage({type:"stitch-route",route},"*");});
+    })();
+  </script>
+</body>
+</html>
