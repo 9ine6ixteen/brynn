@@ -185,7 +185,7 @@
         }
     </style>
 <style>
-.presentation-projects { align-items: stretch !important; } .presentation-project { min-height: 0 !important; height: 100% !important; } .presentation-project > .presentation-visual { flex: 0 0 18rem; height: 18rem !important; } .presentation-project > .p-6 { flex: 1 1 auto; } .presentation-project video { z-index: 20; cursor: pointer; } .presentation-project .presentation-visual > .absolute.inset-0.opacity-20, .presentation-project .presentation-visual > .relative.z-10, .presentation-project .presentation-visual > span { pointer-events: none; }
+.presentation-projects { align-items: start !important; } .presentation-project { align-self: start !important; min-height: 0 !important; height: auto !important; max-height: none !important; } .presentation-project > .presentation-visual { flex: 0 0 auto; width: 100%; height: auto !important; min-height: 0 !important; aspect-ratio: 16 / 9; } .presentation-project > .p-6 { flex: 0 0 auto !important; min-height: 0 !important; padding: 20px 24px !important; } .presentation-project > .p-6 > h2 { margin-bottom: 8px !important; } .presentation-project > .p-6 > p { margin-bottom: 12px !important; } .presentation-project video { z-index: 20; cursor: pointer; width: 100%; height: 100%; object-fit: cover; } .presentation-project .presentation-visual > .absolute.inset-0.opacity-20, .presentation-project .presentation-visual > .relative.z-10, .presentation-project .presentation-visual > span { pointer-events: none; }
 @media (min-width: 768px) {
   body { padding-bottom: 104px !important; }
   .page-main { padding-top: 16px !important; padding-bottom: 32px !important; gap: 24px !important; }
@@ -195,8 +195,9 @@
   .showcase-header { margin-bottom: 24px !important; }
   .showcase-carousel { padding-top: 16px !important; padding-bottom: 16px !important; margin-bottom: 24px !important; }
   .showcase-cards { height: 320px !important; margin-bottom: 16px !important; }
-  .presentation-projects { margin-top: 8px; }
-  .presentation-project { min-height: 520px; }
+  .return-to-works { margin-top: 24px !important; }
+  .presentation-projects { margin-top: 8px !important; }
+  .presentation-project { height: auto !important; min-height: 0 !important; max-height: none !important; overflow: hidden; }
   .showcase-carousel .carousel-item { height: 300px !important; }
   .showcase-carousel .carousel-item.active { height: 320px !important; }
   .showcase-detail { padding: 24px !important; }
@@ -206,7 +207,7 @@
   .ai-detail-grid { margin-bottom: 24px !important; }
 }
 </style><style>
-.presentation-static-cover { cursor: pointer; height: 16rem !important; }
+.presentation-static-cover { cursor: pointer; height: auto !important; aspect-ratio: 16 / 9; }
 .presentation-static-cover img { display: block; width: 100%; height: 100% !important; object-fit: cover; }
 .presentation-static-cover:hover { filter: saturate(1.08); }
 .presentation-gallery-backdrop { position: fixed; inset: 0; z-index: 100; display: none; align-items: center; justify-content: center; padding: 32px; background: rgba(27,28,28,.88); }
@@ -220,6 +221,20 @@
 .presentation-gallery-next { right: -64px; }
 .presentation-gallery-caption { position: absolute; bottom: -34px; left: 50%; transform: translateX(-50%); color: #fcf9f8; font-size: 14px; font-weight: 700; white-space: nowrap; }
 @media (max-width: 700px) { .presentation-gallery-prev { left: 8px; } .presentation-gallery-next { right: 8px; } .presentation-gallery-close { right: 0; } }
+@media (min-width: 768px) {
+  .presentation-project { height: 480px !important; min-height: 480px !important; max-height: 480px !important; }
+  .presentation-project > .p-6 { flex: 1 1 auto !important; min-height: 0 !important; padding: 24px 32px !important; }
+  .presentation-project > .p-6 > h2 { margin-bottom: 12px !important; }
+  .presentation-project > .p-6 > p { margin-bottom: 18px !important; }
+  .presentation-project:first-child > .p-6 > div span:nth-child(1) { background: #f0f4e3 !important; color: #40502c !important; }
+  .presentation-project:first-child > .p-6 > div span:nth-child(2) { background: #e5edcf !important; color: #40502c !important; }
+  .presentation-project:first-child > .p-6 > div span:nth-child(3) { background: #d5e3b3 !important; color: #40502c !important; }
+  .presentation-project:first-child > .p-6 > div span:nth-child(4) { background: #c4d59a !important; color: #40502c !important; }
+  .presentation-project:nth-child(2) > .p-6 > div span:nth-child(1) { background: #fff2e9 !important; color: #704324 !important; }
+  .presentation-project:nth-child(2) > .p-6 > div span:nth-child(2) { background: #ffdfca !important; color: #704324 !important; }
+  .presentation-project:nth-child(2) > .p-6 > div span:nth-child(3) { background: #f8cfb2 !important; color: #704324 !important; }
+  .presentation-project:nth-child(2) > .p-6 > div span:nth-child(4) { background: #f0bd98 !important; color: #704324 !important; }
+}
 </style><style>
 .dynamic-ppt-trigger { cursor: pointer; }
 .dynamic-ppt-trigger video { pointer-events: none; }
@@ -235,7 +250,7 @@
 <div class="text-headline-md font-headline-md text-on-surface flex items-center gap-2"><div class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center neo-border"><span class="material-symbols-outlined text-[18px]">person</span></div>Brynn's Space</div>
 <div class="hidden md:flex items-center gap-8"><a class="text-label-bold font-label-bold hover:text-primary transition-colors text-primary border-b-2 border-primary" href="#works">我的作品</a><a class="text-label-bold font-label-bold text-on-surface-variant" href="#about">关于我</a><a class="text-label-bold font-label-bold hover:text-primary transition-colors text-on-surface-variant" href="#contact">游戏经历</a></div>
 <div class="flex items-center gap-4">
-<a href="%E8%AE%B8%E5%AD%90%E6%80%A1-%E7%94%B5%E5%AD%90%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%A6-%E7%A0%94%E4%B8%80-%E6%96%B0%E9%97%BB%E4%B8%8E%E4%BC%A0%E6%92%AD.pdf" target="_blank" rel="noopener" class="px-6 py-2 rounded-full border-2 border-on-surface bg-primary-container text-on-primary-container text-label-bold font-label-bold hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[4px_4px_0px_0px_rgba(27,28,28,1)] transition-all">下载简历</a>
+<a href="../resume/resume.pdf" target="_blank" rel="noopener" class="px-6 py-2 rounded-full border-2 border-on-surface bg-primary-container text-on-primary-container text-label-bold font-label-bold hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[4px_4px_0px_0px_rgba(27,28,28,1)] transition-all">下载简历</a>
 </div>
 </nav>
 </header>

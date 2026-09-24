@@ -199,8 +199,9 @@
   .showcase-detail { padding: 24px !important; }
   .home-hero { min-height: 560px !important; padding-top: 32px !important; padding-bottom: 32px !important; }
   .home-image-card { width: 72% !important; height: 72% !important; }
-  .ai-showcase-video { max-height: 300px !important; }
-  .ai-detail-grid { margin-bottom: 24px !important; }
+  .ai-showcase-video { width: min(100%, 900px) !important; height: auto !important; min-height: 0 !important; max-height: none !important; aspect-ratio: 16 / 9 !important; }
+  .ai-detail-grid { margin-bottom: 24px !important; align-items: stretch; }
+  .ai-detail-grid > div { min-height: 220px; height: auto; overflow: visible; }
 }
 </style><style>
 .ai-video-trigger { cursor: pointer; }
@@ -216,7 +217,7 @@
 <div class="text-headline-md font-headline-md text-on-surface flex items-center gap-2"><div class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center neo-border"><span class="material-symbols-outlined text-[18px]">person</span></div>Brynn's Space</div>
 <div class="hidden md:flex items-center gap-8"><a class="text-label-bold font-label-bold hover:text-primary transition-colors text-primary border-b-2 border-primary" href="#works">我的作品</a><a class="text-label-bold font-label-bold text-on-surface-variant" href="#about">关于我</a><a class="text-label-bold font-label-bold hover:text-primary transition-colors text-on-surface-variant" href="#contact">游戏经历</a></div>
 <div class="flex items-center gap-4">
-<a href="%E8%AE%B8%E5%AD%90%E6%80%A1-%E7%94%B5%E5%AD%90%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%A6-%E7%A0%94%E4%B8%80-%E6%96%B0%E9%97%BB%E4%B8%8E%E4%BC%A0%E6%92%AD.pdf" target="_blank" rel="noopener" class="px-6 py-2 rounded-full border-2 border-on-surface bg-primary-container text-on-primary-container text-label-bold font-label-bold hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[4px_4px_0px_0px_rgba(27,28,28,1)] transition-all">下载简历</a>
+<a href="../resume/resume.pdf" target="_blank" rel="noopener" class="px-6 py-2 rounded-full border-2 border-on-surface bg-primary-container text-on-primary-container text-label-bold font-label-bold hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[4px_4px_0px_0px_rgba(27,28,28,1)] transition-all">下载简历</a>
 </div>
 </nav>
 </header>
@@ -236,7 +237,7 @@
 <!-- Carousel Section -->
 <div class="showcase-carousel w-full max-w-4xl mb-12">
 <div class="ai-showcase-video ai-video-trigger aspect-video w-full bg-on-surface neo-border neo-shadow flex items-center justify-center overflow-hidden relative" id="ai-video-trigger" role="button" tabindex="0" aria-label="查看AI视频详情">
-<img class="absolute inset-0 w-full h-full object-cover" src="../ai-storytelling/cover.png?v=20260820" alt="AI视频封面">
+<img class="absolute inset-0 w-full h-full object-cover" src="../ai-storytelling/cover.png" alt="AI视频封面">
 <div class="absolute inset-0 bg-on-surface/20 flex items-center justify-center"><span class="material-symbols-outlined text-surface text-6xl">play_circle</span></div>
 </div>
 </div><div class="ai-detail-grid grid md:grid-cols-2 gap-8 w-full max-w-4xl mb-12">
@@ -260,7 +261,7 @@
 <!-- Detail Text Area -->
 </main><div class="ai-video-modal" id="ai-video-modal" role="dialog" aria-modal="true" aria-label="AI视频详情">
 <button class="ai-video-modal-close" id="ai-video-modal-close" type="button" aria-label="关闭"><span class="material-symbols-outlined">close</span></button>
-<video id="ai-video-modal-player" controls preload="metadata" poster="../ai-storytelling/cover.png?v=20260820"><source src="../ai-storytelling/营销测试题-预告片-许子怡.mp4?v=20260820" type="video/mp4"></video>
+<video id="ai-video-modal-player" controls preload="metadata" poster="../ai-storytelling/cover.png"><source src="../ai-storytelling/营销测试题-预告片-许子怡.mp4" type="video/mp4"></video>
 </div>
 <script>
 (function(){
