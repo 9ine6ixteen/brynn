@@ -1,17 +1,41 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Brynn's Space</title><style>html,body{margin:0;width:100%;height:100%;background:#fcf9f8}body{overflow:hidden}iframe{display:block;width:100%;height:100vh;border:0}</style></head>
-<body><iframe id="page" title="Brynn's Space" src="_4/code.html"></iframe><script>
-const routes={about:'_4/code.html',works:'_3/code.html',content:'_1/code.html',presentation:'_2/code.html',ai:'ai/code.html',contact:'game/code.html',trigram:'trigram/code.html'};
-const frame=document.getElementById('page');
-function showPage(route){const src=routes[route]||routes.about;if(frame.getAttribute('src')!==src)frame.setAttribute('src',src)}
-window.addEventListener('hashchange',()=>showPage(location.hash.slice(1)));
-window.addEventListener('message',(event)=>{
-  if(event.data && event.data.type==='stitch-route'){
-    const route=event.data.route;
-    if(location.hash.slice(1)!==route) history.replaceState(null,'','#'+route);
-    showPage(route);
-  }
-});
-showPage(location.hash.slice(1)||'about');
-</script></body></html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="theme-color" content="#fcf9f8">
+  <title>Brynn's Space</title>
+  <style>
+    html, body { margin: 0; width: 100%; min-height: 100%; background: #fcf9f8; }
+    body { overflow-x: hidden; overflow-y: auto; }
+    iframe { display: block; width: 100%; height: 100dvh; min-height: 100dvh; border: 0; }
+  </style>
+</head>
+<body>
+  <iframe id="page" title="Brynn's Space" src="home/code.html?v=20261010-4"></iframe>
+  <script>
+    const routes = {
+      home: 'home/code.html?v=20261010-4', about: '_4/code.html?v=20261010-4', works: '_3/code.html?v=20261010-4', content: '_1/code.html?v=20261010-4',
+      presentation: '_2/code.html?v=20261010-4', ai: 'ai/code.html?v=20261010-4', contact: 'game/code.html?v=20261010-4',
+      trigram: 'trigram/code.html?v=20261010-4'
+    };
+    const frame = document.getElementById('page');
+
+    function showPage(route) {
+      const src = routes[route] || routes.home;
+      if (frame.getAttribute('src') !== src) frame.setAttribute('src', src);
+    }
+
+    window.addEventListener('hashchange', () => showPage(location.hash.slice(1)));
+    window.addEventListener('popstate', () => showPage(location.hash.slice(1) || 'home'));
+    window.addEventListener('message', event => {
+      if (event.data?.type === 'stitch-route') {
+        const route = event.data.route;
+        if (location.hash.slice(1) !== route) history.pushState({ route }, '', `#${route}`);
+        showPage(route);
+      }
+    });
+    showPage(location.hash.slice(1) || 'home');
+  </script>
+</body>
+</html>

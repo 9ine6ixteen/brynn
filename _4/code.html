@@ -1,6 +1,7 @@
 <!DOCTYPE html><html class="scroll-smooth" lang="en" style=""><head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link rel="stylesheet" href="../detail-transitions.css">
 <title>Portfolio - Soft Neo-Brutalism</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
@@ -142,7 +143,7 @@
   .showcase-detail { padding: 24px !important; }
   .home-hero { min-height: 520px !important; padding-top: 24px !important; padding-bottom: 24px !important; }
   .home-card-stack { transform: translateY(-18px) scale(0.82) !important; transform-origin: center center; }
-  .home-image-card { width: 85% !important; height: 85% !important; }
+  .home-image-card { width: 85% !important; height: 85% !important; margin-inline:auto !important; background-position:55% center !important; }
   .home-hero + .page-footer { margin-top: 0 !important; }
   .ai-showcase-video { max-height: 300px !important; }
   .ai-detail-grid { margin-bottom: 24px !important; }
@@ -152,10 +153,10 @@
 <!-- Top Navigation -->
 <header class="w-full py-4 bg-background border-b-2 border-on-surface z-50 sticky top-0">
 <nav class="flex justify-between items-center max-w-7xl mx-auto px-container-padding">
-<div class="text-headline-md font-headline-md text-on-surface flex items-center gap-2"><div class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center neo-border"><span class="material-symbols-outlined text-[18px]">person</span></div>Brynn's Space</div>
-<div class="hidden md:flex items-center gap-8"><a class="text-label-bold font-label-bold text-on-surface hover:text-primary transition-colors" href="#works">我的作品</a><a class="text-label-bold font-label-bold text-primary border-b-2 border-primary" href="#about">关于我</a><a class="text-label-bold font-label-bold text-on-surface hover:text-primary transition-colors" href="#contact">游戏经历</a><a class="text-label-bold font-label-bold text-on-surface hover:text-primary transition-colors" href="#trigram" aria-label="试一试" title="试一试">🍃</a></div>
+<a href="../index.html#home" target="_top" class="block shrink-0" aria-label="返回 3D 首页"><img src="../assets/brand/brynns-space-logo.png" alt="Brynn's Space" class="h-12 w-auto max-w-[220px] object-contain" style="transform:scale(1.3);transform-origin:left center"></a>
+<div class="hidden md:flex items-center gap-8"><a class="text-label-bold font-label-bold text-on-surface hover:text-primary transition-colors" href="#works">我的作品</a><a class="text-label-bold font-label-bold text-primary border-b-2 border-primary" href="#about">关于我</a><a class="text-label-bold font-label-bold text-on-surface hover:text-primary transition-colors" href="#contact">游戏经历</a><a class="text-label-bold font-label-bold text-on-surface hover:text-primary transition-colors" href="#trigram">落叶成卦</a></div>
 <div class="flex items-center gap-4">
-<a href="../resume/许子怡_硕士_电子科技大学_新闻与传播.pdf" target="_blank" rel="noopener" class="px-6 py-2 rounded-full border-2 border-on-surface bg-primary-container text-on-primary-container text-label-bold font-label-bold hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[4px_4px_0px_0px_rgba(27,28,28,1)] transition-all">下载简历</a>
+<a href="../assets/resume/brynn-xu-resume.pdf" target="_blank" rel="noopener" class="px-6 py-2 rounded-full border-2 border-on-surface bg-primary-container text-on-primary-container text-label-bold font-label-bold hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[4px_4px_0px_0px_rgba(27,28,28,1)] transition-all">下载简历</a>
 </div>
 </nav>
 </header>
@@ -168,7 +169,7 @@
 <!-- Mat Background -->
 <div class="absolute inset-0 bg-tertiary-fixed rounded-[32px] neo-border translate-x-4 translate-y-4"></div>
 <!-- Main Image Card -->
-<div class="home-image-card relative w-[85%] h-[85%] bg-surface rounded-[24px] neo-border overflow-hidden z-10 flex flex-col justify-end p-6" data-alt="A balanced stack of smooth, river-worn stones in muted organic colors (beige, pale green, soft orange) resting on a clean white surface in a bright, soft-lit studio setting. High quality photography style reflecting zen balance and modern minimal aesthetics." style="background-image: url(&quot;../about/profile.jpg&quot;); background-size: cover; background-position: center center;">
+<div class="home-image-card relative w-[85%] h-[85%] bg-surface rounded-[24px] neo-border overflow-hidden z-10 flex flex-col justify-end p-6" data-alt="A balanced stack of smooth, river-worn stones in muted organic colors (beige, pale green, soft orange) resting on a clean white surface in a bright, soft-lit studio setting. High quality photography style reflecting zen balance and modern minimal aesthetics." style="background-image: url(&quot;../assets/about/profile.jpg&quot;); background-size: cover; background-position: center center;">
 <!-- Contextual badge inside main image -->
 <div class="absolute top-6 right-6 px-4 py-2 bg-primary-container text-on-primary-container rounded-full neo-border text-label-bold font-label-bold neo-shadow-hover transition-all cursor-default">
                          HI!
@@ -198,9 +199,9 @@
 </section>
 <!-- Footer -->
 <footer class="page-footer w-full mt-section-gap rounded-t-3xl border-t-2 border-on-surface bg-surface-container">
-<div class="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto px-container-padding py-12 gap-base">
-<div class="text-headline-sm font-headline-sm text-on-surface flex items-center gap-2"><div class="w-6 h-6 rounded-full bg-secondary-fixed flex items-center justify-center neo-border"><span class="material-symbols-outlined text-[14px]">person</span></div>Brynn's Space</div>
-<div class="flex gap-4">
+<div class="relative flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto px-container-padding py-12 gap-base">
+<a href="../index.html#home" target="_top" class="block shrink-0" aria-label="返回 3D 首页"><img src="../assets/brand/brynns-space-logo.png" alt="Brynn's Space" class="h-7 w-auto max-w-[150px] object-contain" style="transform:scale(1.9);transform-origin:left center"></a>
+<div class="flex gap-4 md:absolute md:left-1/2 md:-translate-x-1/2">
 <div class="relative group">
 <button class="hover-jiggle px-6 py-2 rounded-full border-2 border-on-surface bg-primary-container text-on-primary-container text-label-bold font-label-bold neo-shadow-hover transition-all duration-300 cursor-pointer" onclick="handleContactClick(this, '微信', 'Nine6ixteen')">微信</button>
 <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform scale-95 group-hover:scale-100 origin-bottom bg-surface text-on-surface neo-border neo-shadow px-4 py-2 rounded-lg text-label-bold font-label-bold z-50 pointer-events-none whitespace-nowrap">
